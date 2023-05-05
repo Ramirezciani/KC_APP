@@ -1,13 +1,32 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
+  
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">login</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <img  class="logo" alt="">
+
+  <ion-card>
+    <ion-item class="menucolor">
+      <ion-input  [(ngModel)]="usuario"label="Usuario" label-placement="floating" fill="solid" placeholder="18223324" maxLength="8"></ion-input>
+    </ion-item>
+    
+    <ion-item  class="menucolor">
+      <ion-input [(ngModel)]="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="********" type="password"></ion-input>
+    </ion-item>
+  </ion-card>
+
+  
+  <!-- boton aceptar -->
+  <ion-button  class="button" class="boton_aceptar"  expand="block" (click)="IrHome()">Ingresar</ion-button>
+  <!-- boton Canelar -->
+  <ion-button class="button" color="danger" expand="block">Cancelar</ion-button>
+    <!-- link a cambiar pass -->
+  <a>¿Olvidaste tu contraseña?</a> 
 </ion-content>
+
+<ion-footer [translucent]="false">
+  <ion-toolbar>
+    <ion-title>¿Aún no tienes cuenta? <a>Registrate</a></ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,46 @@
+*{
+    text-align: center;
+    color: aliceblue;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+    
+}
+
+#item {
+    margin: 5px;
+    padding: 2px;
+}
+
+ion-item{
+    
+    background-color: transparent;
+    border-radius: 5px;
+    border: solid white 1.5px;
+
+    padding: 4px;
+}
+
+ion-input {
+    text-decoration: none;
+    color: #ff6a00;
+}
+
+ion-card{
+    background-color: transparent;
+}
+
+
+.button{
+    margin: 3px;
+    padding: 2px;
+    color: #4f2d4b;
+}
+
+h1{
+    color: #9aedb5;
+    margin:20px;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color:transparent;
+
+}

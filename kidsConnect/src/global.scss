@@ -24,3 +24,41 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+// font-family: 'DynaPuff', cursive; para agregarla en css
+    
+
+//Color de fondo
+ion-content{
+        --ion-background-color:#3b0c2c;
+    }
+
+//Color boton aceptar para todas las vistas
+.boton_aceptar{
+    --background: #ff6a00;
+    
+}
+
+//barra de las paginas
+
+.toolbar{
+    --background: #3b0c2c;
+    --color: #9aedb5;
+    //Steelblue
+    
+}
+
+//Color de las cartas
+
+.menucolor{
+    --background: #faf4e0;
+    // medium ionic colors
+}
+
+
+
+.registercolor{
+    --background: #faf4e0;
+}
