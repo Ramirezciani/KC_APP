@@ -1,0 +1,26 @@
+
+*{
+    text-align: center;
+    color: #ff6a00;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+a{
+    padding: 5px;
+    color:#ff6a00 ;
+    text-shadow: 1px;
+    position: relative;
+}
+ion-item{
+    
+    background-color: transparent;
+    border-radius: 5px;
+    border: solid white 1px;
+    text-decoration: none;
+    padding: 4px;
+}
+
+
+ion-list{
+    background-color: transparent;
+    border-radius: 5px;
+}

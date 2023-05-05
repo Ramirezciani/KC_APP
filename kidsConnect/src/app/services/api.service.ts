@@ -13,9 +13,8 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
-  obtenerFichaPorAlumno(numrun: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}?funcion=obtenerFichaPorAlumno&numrun=${numrun}`);
-  }
+
+
 }
 
  

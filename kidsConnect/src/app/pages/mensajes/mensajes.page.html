@@ -9,8 +9,13 @@
     <ion-list >
       <!-- Opcion mensajes -->
       <ion-item class="menucolor">
+        <ion-icon name="home-outline"></ion-icon>
+        <a >Volver al Home</a>
+      </ion-item>
+      
+      <ion-item class="menucolor">
         <ion-icon name="mail-outline"></ion-icon>
-        <a (click)="ir_mensajes()">Mensajes</a>
+        <a >Mensajes</a>
       </ion-item>
 
       <!-- Opcion Anuncions -->
@@ -22,7 +27,7 @@
        <!-- Opcion Ficha -->
        <ion-item class="menucolor">
         <ion-icon name="people-outline"></ion-icon>
-        <a (click)="ir_ficha()">Ficha Alumno</a>
+        <a >Ficha Alumno</a>
       </ion-item>
 
        <!-- Opcion Ver perfil docente -->
@@ -46,57 +51,51 @@
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title>Bienvenido (nombre usuario)</ion-title>
+      <ion-title>Mensajes</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content [fullscreen]="true">
-
-    <!-- Carta ficha -->
-
-    <ion-card class="card" class="menucolor">
+    <!-- Card Bandeja de entrada -->
+    <ion-card class="menucolor">
       <ion-card-header>
-        <ion-card-title>Ficha Alumno</ion-card-title>
-        <ion-card-subtitle>Aqui podras ver el progreso de tu hijo</ion-card-subtitle>
+        <ion-card-title>Mensajes Recibidos</ion-card-title>
+        
       </ion-card-header>
-      <ion-button fill="clear" (click)="ir_ficha()" >Ir a Ficha</ion-button>
-      </ion-card>
-
-
-  
-    <!-- Carta mensajes -->
-  
-    <ion-card class="card" class="menucolor">
-      <ion-card-header>
-        <ion-card-title>Mensajes</ion-card-title>
-        <ion-card-subtitle>Aqui podras ver tus mensajes</ion-card-subtitle>
-      </ion-card-header>
-      <!-- <ion-card-content>
-        Here's a small text description for the card content. Nothing more, nothing less.
+      <ion-card-content>
+        <ion-list>
+          <ion-item class="registercolor">
+            <ion-icon name="mail-open"></ion-icon>
+            <ion-label (click)="bandeja_entrada()">Bandeja Entrada</ion-label>
+          </ion-item >
+          
+        </ion-list>
       </ion-card-content>
-     -->
-      <ion-button fill="clear" (click)="ir_mensajes()" >Ir a mensajes</ion-button>
     </ion-card>
 
-
-
-    <!-- Calendario eventos -->
-    
-    <ion-card class="card" class="menucolor">
+    <ion-card class="menucolor">
       <ion-card-header>
-        <ion-card-title>Eventos</ion-card-title>
-        <ion-card-subtitle>Aqui podras ver los eventos del jardin</ion-card-subtitle>
+        <ion-card-title>Enviar Mensaje</ion-card-title>
       </ion-card-header>
-      <ion-datetime></ion-datetime>
-      <ion-button fill="clear" >Ir a Eventos</ion-button>
-      
+      <ion-card-content>
+        <ion-list>
+          
+    
+          <ion-item class="registercolor">
+            <ion-icon name="mail"></ion-icon>
+            <ion-label >Enviar Mensaje</ion-label>
+          </ion-item>
+    
+        </ion-list>
+      </ion-card-content>
     </ion-card>
-
-    
-    
-
   </ion-content>
+
    
 </div>
+
+
+
+
 
 
 

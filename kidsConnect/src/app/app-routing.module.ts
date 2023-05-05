@@ -23,7 +23,15 @@ const routes: Routes = [
   {
     path: 'ficha-alumno',
     loadChildren: () => import('./pages/ficha-alumno/ficha-alumno.module').then( m => m.FichaAlumnoPageModule)
+  },  {
+    path: 'mensajes',
+    loadChildren: () => import('./pages/mensajes/mensajes.module').then( m => m.MensajesPageModule)
   },
+  {
+    path: 'mensaje-recibido',
+    loadChildren: () => import('./pages/mensaje-recibido/mensaje-recibido.module').then( m => m.MensajeRecibidoPageModule)
+  },
+
 
 ];
 
