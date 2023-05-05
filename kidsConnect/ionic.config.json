@@ -1,0 +1,7 @@
+{
+  "name": "kidsConnect",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
