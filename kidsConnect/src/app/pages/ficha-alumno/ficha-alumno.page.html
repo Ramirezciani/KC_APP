@@ -1,4 +1,3 @@
-
 <ion-menu contentId="main-content">
   <ion-header>
     <ion-toolbar class="menucolor">
@@ -9,14 +8,15 @@
     <!-- opciones que tiene el menu -->
     <ion-list >
       <!-- Opcion mensajes -->
+      <!-- Volver al home -->
       <ion-item class="menucolor">
         <ion-icon name="home-outline"></ion-icon>
-        <a >Volver al Home</a>
+        <a (click)="ir_home()">Volver al Home</a>
       </ion-item>
-      
+      <!-- Mensajes -->
       <ion-item class="menucolor">
         <ion-icon name="mail-outline"></ion-icon>
-        <a >Mensajes</a>
+        <a>Mensajes</a>
       </ion-item>
 
       <!-- Opcion Anuncions -->
@@ -28,7 +28,7 @@
        <!-- Opcion Ficha -->
        <ion-item class="menucolor">
         <ion-icon name="people-outline"></ion-icon>
-        <a >Ficha Alumno</a>
+        <a>Ficha Alumno</a>
       </ion-item>
 
        <!-- Opcion Ver perfil docente -->
@@ -36,8 +36,6 @@
         <ion-icon name="book-outline"></ion-icon>
         <a >Perfil Docente</a>
       </ion-item>
-
-
       <!-- End session -->
        <ion-item class="menucolor">
         <ion-icon name="close-outline"></ion-icon>
@@ -46,17 +44,19 @@
     </ion-list>
   </ion-content>
 </ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar class="menucolor">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Fichas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true">
 
 
-
-    
-    <ion-content >
+  <ion-content >
       <ion-searchbar class="menucolor"></ion-searchbar>
-      <ion-button expand="block" >Buscar</ion-button>
-    
-      <ion-list>
-        <ion-item >
-          <ion-label></ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-content>
+      <ion-button  class="button" class="boton_aceptar"  expand="block">Ingresar</ion-button>
+  </ion-content>

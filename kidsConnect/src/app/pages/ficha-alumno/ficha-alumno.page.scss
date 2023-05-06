@@ -6,8 +6,30 @@
     
 }
 
+.card{
+    border-radius: 5%;
+}
 
-.button{
-    margin: 10px;
-    color: white;
+a{
+    padding: 5px;
+    color: #ff6a00;
+    text-shadow: 1px;
+    position: relative;
+}
+a:hover{
+    color: orange;
+}
+
+ion-item{
+    
+    background-color: transparent;
+    border-radius: 5px;
+    border: solid white 1px;
+    text-decoration: none;
+    padding: 4px;
+}
+
+ion-list{
+    background-color: transparent;
+    border-radius: 5px;
 }

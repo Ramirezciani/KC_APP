@@ -32,7 +32,8 @@
 
 //Color de fondo
 ion-content{
-        --ion-background-color:#3b0c2c;
+        --ion-background-color:#e3dacb
+        ;
     }
 
 //Color boton aceptar para todas las vistas
@@ -61,4 +62,9 @@ ion-content{
 
 .registercolor{
     --background: #faf4e0;
+}
+
+.colornav{
+    --background: #fcb653;
+    
 }

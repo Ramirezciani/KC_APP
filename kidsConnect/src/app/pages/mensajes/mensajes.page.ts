@@ -16,4 +16,8 @@ export class MensajesPage implements OnInit {
   bandeja_entrada(){
     this.router.navigate(['/mensaje-recibido'])
   }
+  
+  ir_home(){
+    this.router.navigate(['/principal'])
+  }
 }

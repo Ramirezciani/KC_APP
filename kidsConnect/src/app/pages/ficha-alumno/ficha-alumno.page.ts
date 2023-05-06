@@ -1,6 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+
 
 @Component({
   selector: 'app-ficha-alumno',
@@ -12,7 +14,8 @@ export class FichaAlumnoPage implements OnInit {
   // fichas: any[] = [];
   // numRunAlumno: string = '';
 
-  constructor(private apiService:ApiService) { }
+  constructor(private apiService:ApiService,
+              private router:Router) { }
   
 
   ngOnInit() {
@@ -24,5 +27,9 @@ export class FichaAlumnoPage implements OnInit {
   //     console.log(error);
   //   });
   // }
+
+  ir_home(){
+    this.router.navigate(['/principal'])
+  }
 
 }
