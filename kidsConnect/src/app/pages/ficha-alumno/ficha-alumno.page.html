@@ -1,19 +1,62 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Buscar Fichas por Alumno
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content padding>
-  <ion-searchbar></ion-searchbar>
-  <ion-button expand="block" >Buscar</ion-button>
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar class="menucolor">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <!-- opciones que tiene el menu -->
+    <ion-list >
+      <!-- Opcion mensajes -->
+      <ion-item class="menucolor">
+        <ion-icon name="home-outline"></ion-icon>
+        <a >Volver al Home</a>
+      </ion-item>
+      
+      <ion-item class="menucolor">
+        <ion-icon name="mail-outline"></ion-icon>
+        <a >Mensajes</a>
+      </ion-item>
 
-  <ion-list>
-    <ion-item >
-      <ion-label></ion-label>
-    </ion-item>
-  </ion-list>
-</ion-content>
+      <!-- Opcion Anuncions -->
+      <ion-item class="menucolor">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <a >Eventos</a>
+      </ion-item>
 
+       <!-- Opcion Ficha -->
+       <ion-item class="menucolor">
+        <ion-icon name="people-outline"></ion-icon>
+        <a >Ficha Alumno</a>
+      </ion-item>
+
+       <!-- Opcion Ver perfil docente -->
+       <ion-item class="menucolor">
+        <ion-icon name="book-outline"></ion-icon>
+        <a >Perfil Docente</a>
+      </ion-item>
+
+
+      <!-- End session -->
+       <ion-item class="menucolor">
+        <ion-icon name="close-outline"></ion-icon>
+        <a >Cerrar Sesion</a>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+
+
+    
+    <ion-content >
+      <ion-searchbar class="menucolor"></ion-searchbar>
+      <ion-button expand="block" >Buscar</ion-button>
+    
+      <ion-list>
+        <ion-item >
+          <ion-label></ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
