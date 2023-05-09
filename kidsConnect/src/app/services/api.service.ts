@@ -8,17 +8,17 @@ import { Observable } from 'rxjs';
 export class ApiService {
 
   //Url de la api 
-  apiUrl = 'http://tmp.enred.cl/rest/get_ficha.php/rest/get_ficha.php';
+  // private apiUrl  = 'http://tmp.enred.cl/rest/api.php';
 
 
   constructor(private http:HttpClient) { }
 
+  obtenerRegiones(): Observable<any> {
+    return this.http.get('http://tmp.enred.cl/get_region.php');
+  }
 
-
+  
 }
 
  
-
- 
-
 
