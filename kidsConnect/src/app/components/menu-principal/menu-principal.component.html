@@ -1,17 +1,46 @@
 <ion-menu side="start" menuId="menuPrincipal" contentId="main">
-  <ion-header >
-    <ion-toolbar class="toolbar">
+  <ion-header>
+    <ion-toolbar class="menucolor">
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content >
-    <ion-list class="menucolor">
-      <ion-item>Menu Item </ion-item>
-      <ion-item>Menu Item </ion-item>
-      <ion-item>Menu Item </ion-item>
-      <ion-item>Menu Item </ion-item>
-      <ion-item>Menu Item </ion-item>
-      <ion-item>Menu Item </ion-item>
+  <ion-content class="ion-padding">
+    <!-- opciones que tiene el menu -->
+    <ion-list >
+      <!-- Opcion mensajes -->
+      <!-- Volver al home -->
+      <ion-item class="menucolor">
+        <ion-icon name="home-outline"></ion-icon>
+        <a (click)="ir_home()">Volver al Home</a>
+      </ion-item>
+      <!-- Mensajes -->
+      <ion-item class="menucolor">
+        <ion-icon name="mail-outline"></ion-icon>
+        <a>Mensajes</a>
+      </ion-item>
+
+      <!-- Opcion Anuncions -->
+      <ion-item class="menucolor">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <a >Eventos</a>
+      </ion-item>
+
+       <!-- Opcion Ficha -->
+       <ion-item class="menucolor">
+        <ion-icon name="people-outline"></ion-icon>
+        <a>Ficha Alumno</a>
+      </ion-item>
+
+       <!-- Opcion Ver perfil docente -->
+       <ion-item class="menucolor">
+        <ion-icon name="book-outline"></ion-icon>
+        <a >Perfil Docente</a>
+      </ion-item>
+      <!-- End session -->
+       <ion-item class="menucolor">
+        <ion-icon name="close-outline"></ion-icon>
+        <a >Cerrar Sesion</a>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>

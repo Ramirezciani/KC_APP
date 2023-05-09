@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 
 
@@ -15,7 +16,8 @@ export class FichaAlumnoPage implements OnInit {
   // numRunAlumno: string = '';
 
   constructor(private apiService:ApiService,
-              private router:Router) { }
+              private router:Router,
+              private menuCtrl:MenuController) { }
   
 
   ngOnInit() {
@@ -27,6 +29,12 @@ export class FichaAlumnoPage implements OnInit {
   //     console.log(error);
   //   });
   // }
+
+
+  
+  onClick(){
+    this.menuCtrl.toggle();
+  }
 
 
 }

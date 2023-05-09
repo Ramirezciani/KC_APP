@@ -1,6 +1,19 @@
-<ion-header>
+<!-- Esto debe ir en cada pagina para cargar el componente menu -->
 
-</ion-header>
-<ion-content padding>
+<ion-header [translucent]="true">
+    <ion-toolbar class="toolbar">
+      <ion-buttons>
+        <ion-button (click)="onClick()">
+          <ion-icon slot="start" name="menu"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<!-- Esto debe ir en cada pagina para cargar el componente menu -->
+  
+<ion-content >
 
 </ion-content>

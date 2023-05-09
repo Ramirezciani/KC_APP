@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-menu-principal',
@@ -7,8 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuPrincipalComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,
+              private menuCtrl: MenuController) { }
 
   ngOnInit() {}
+
+
+  //desplegar menu
+  onClick(){
+    this.menuCtrl.toggle();
+  }
+
+  ir_home(){
+    this.router.navigate(['/principal'])
+  }
 
 }
