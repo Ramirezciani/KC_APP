@@ -1,102 +1,48 @@
-<ion-menu contentId="main-content">
-  <ion-header>
-    <ion-toolbar class="menucolor">
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
-    <!-- opciones que tiene el menu -->
-    <ion-list >
-      <!-- Opcion mensajes -->
-      <ion-item class="menucolor">
-        <ion-icon name="mail-outline"></ion-icon>
-        <a (click)="ir_mensajes()">Mensajes</a>
-      </ion-item>
 
-      <!-- Opcion Anuncions -->
-      <ion-item class="menucolor">
-        <ion-icon name="calendar-outline"></ion-icon>
-        <a >Eventos</a>
-      </ion-item>
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons>
+      <ion-button (click)="onClick()">
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
 
-       <!-- Opcion Ficha -->
-       <ion-item class="menucolor">
-        <ion-icon name="people-outline"></ion-icon>
-        <a (click)="ir_ficha()">Ficha Alumno</a>
-      </ion-item>
+      <!-- Carta ficha -->
+<ion-card class="card" class="menucolor">
+  <ion-card-header>
+    <ion-card-title>Ficha Alumno</ion-card-title>
+    <ion-card-subtitle>Aqui podras ver el progreso de tu hijo</ion-card-subtitle>
+  </ion-card-header>
+  <ion-button fill="clear" (click)="ir_ficha()" >Ir a Ficha</ion-button>
+  </ion-card>
+<!-- Carta mensajes -->
+<ion-card class="card" class="menucolor">
+  <ion-card-header>
+    <ion-card-title>Mensajes</ion-card-title>
+    <ion-card-subtitle>Aqui podras ver tus mensajes</ion-card-subtitle>
+  </ion-card-header>
+  <!-- <ion-card-content>
+    Here's a small text description for the card content. Nothing more, nothing less.
+  </ion-card-content>
+ -->
+  <ion-button fill="clear" (click)="ir_mensajes()" >Ir a mensajes</ion-button>
+</ion-card>
+<!-- Calendario eventos -->
 
-       <!-- Opcion Ver perfil docente -->
-       <ion-item class="menucolor">
-        <ion-icon name="book-outline"></ion-icon>
-        <a >Perfil Docente</a>
-      </ion-item>
-
-
-      <!-- End session -->
-       <ion-item class="menucolor">
-        <ion-icon name="close-outline"></ion-icon>
-        <a >Cerrar Sesion</a>
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-<div class="ion-page" id="main-content">
-  <ion-header>
-    <ion-toolbar class="colornav">
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title class="title">Bienvenido (nombre usuario)</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content [fullscreen]="true">
-
-    <!-- Carta ficha -->
-
-    <ion-card class="card" class="menucolor">
-      <ion-card-header>
-        <ion-card-title>Ficha Alumno</ion-card-title>
-        <ion-card-subtitle>Aqui podras ver el progreso de tu hijo</ion-card-subtitle>
-      </ion-card-header>
-      <ion-button fill="clear" (click)="ir_ficha()" >Ir a Ficha</ion-button>
-      </ion-card>
-
+<ion-card class="card" class="menucolor">
+  <ion-card-header>
+    <ion-card-title>Eventos</ion-card-title>
+    <ion-card-subtitle>Aqui podras ver los eventos del jardin</ion-card-subtitle>
+  </ion-card-header>
+  <ion-datetime></ion-datetime>
+  <ion-button fill="clear" >Ir a Eventos</ion-button>
+  
+</ion-card>
 
   
-    <!-- Carta mensajes -->
-  
-    <ion-card class="card" class="menucolor">
-      <ion-card-header>
-        <ion-card-title>Mensajes</ion-card-title>
-        <ion-card-subtitle>Aqui podras ver tus mensajes</ion-card-subtitle>
-      </ion-card-header>
-      <!-- <ion-card-content>
-        Here's a small text description for the card content. Nothing more, nothing less.
-      </ion-card-content>
-     -->
-      <ion-button fill="clear" (click)="ir_mensajes()" >Ir a mensajes</ion-button>
-    </ion-card>
-
-
-
-    <!-- Calendario eventos -->
-    
-    <ion-card class="card" class="menucolor">
-      <ion-card-header>
-        <ion-card-title>Eventos</ion-card-title>
-        <ion-card-subtitle>Aqui podras ver los eventos del jardin</ion-card-subtitle>
-      </ion-card-header>
-      <ion-datetime></ion-datetime>
-      <ion-button fill="clear" >Ir a Eventos</ion-button>
-      
-    </ion-card>
-
-    
-    
-
-  </ion-content>
-   
-</div>
-
-
-
+</ion-content>

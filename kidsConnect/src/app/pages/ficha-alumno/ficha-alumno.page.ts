@@ -28,8 +28,5 @@ export class FichaAlumnoPage implements OnInit {
   //   });
   // }
 
-  ir_home(){
-    this.router.navigate(['/principal'])
-  }
 
 }

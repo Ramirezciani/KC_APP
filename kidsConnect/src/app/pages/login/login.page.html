@@ -5,15 +5,21 @@
 <ion-content [fullscreen]="true">
   <img src="assets/logo.png" class="logo" alt="">
 
-  <ion-card>
-    <ion-item class="menucolor">
-      <ion-input  [(ngModel)]="usuario"label="Usuario" label-placement="floating" fill="solid" placeholder="18223324" maxLength="8"></ion-input>
-    </ion-item>
-    
-    <ion-item  class="menucolor">
-      <ion-input [(ngModel)]="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="********" type="password"></ion-input>
-    </ion-item>
-  </ion-card>
+
+
+  
+  
+    <form>
+      <ion-item lines="full" class="menucolor">
+        <ion-label position="floating" >Usuario</ion-label>
+        <ion-input  type="number" [clearInput]="true" maxLength="8" required></ion-input>
+      </ion-item>
+      <ion-item lines="full" class="menucolor">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password"  required></ion-input>
+      </ion-item>
+    </form>
+  
 
   
   <!-- boton aceptar -->
@@ -26,6 +32,8 @@
 
 <ion-footer [translucent]="false">
   <ion-toolbar>
-    <ion-title>¿Aún no tienes cuenta? <a>Registrate</a></ion-title>
+    <ion-title>¿Aún no tienes cuenta? <a>Conctanos</a></ion-title>
   </ion-toolbar>
 </ion-footer>
+
+

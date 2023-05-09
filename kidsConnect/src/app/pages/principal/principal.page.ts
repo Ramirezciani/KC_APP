@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-principal',
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class PrincipalPage implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+              private menuCtrl: MenuController) { }
 
   ngOnInit() {
   }
@@ -19,6 +21,11 @@ export class PrincipalPage implements OnInit {
 
   ir_ficha(){
     this.router.navigate(['/ficha-alumno'])
+  }
+
+  onClick(){
+    this.menuCtrl.toggle();
+
   }
 
   

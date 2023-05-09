@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +9,17 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
+  mostrarMenu = false;
+
    //Variables del ngModel para usuario y password
    usuario: string = '';
    password: string = '';
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+              private menu: MenuController) { }
 
   ngOnInit() {
+    this.menu.enable(false, 'menuPrincipal');
   }
 
     // Funcion para validar los datos del usuario
