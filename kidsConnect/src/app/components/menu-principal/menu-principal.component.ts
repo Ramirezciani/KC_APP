@@ -24,4 +24,11 @@ export class MenuPrincipalComponent  implements OnInit {
     this.router.navigate(['/principal'])
   }
 
+  ir_mensajes(){
+    this.router.navigate(['/mensajes'])
+  }
+
+  ir_eventos(){
+    this.router.navigate(['/eventos'])
+  }
 }
