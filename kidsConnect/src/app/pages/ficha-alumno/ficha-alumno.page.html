@@ -1,19 +1,45 @@
-<!-- Esto debe ir en cada pagina para cargar el componente menu -->
-
 <ion-header [translucent]="true">
-    <ion-toolbar class="toolbar">
-      <ion-buttons>
-        <ion-button (click)="onClick()">
-          <ion-icon slot="start" name="menu"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-      <ion-title>
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-buttons>
+      <ion-button (click)="onClick()">
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Ficha del Alumno</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<!-- Esto debe ir en cada pagina para cargar el componente menu -->
-  
-<ion-content >
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">RUT del Alumno</ion-label>
+          <ion-input [(ngModel)]="rutAlumno" type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand="full" (click)="buscarFicha()">Buscar</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" *ngIf="fichas.length > 0">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Ficha del Alumno</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <pre>{{ fichas | json }}</pre>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" *ngIf="fichas.length === 0">
+        <p>No se encontró ninguna ficha para el RUT especificado.</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+  private objetoAlumno: any = {};
 
-  //Url de la api 
-  // private apiUrl  = 'http://tmp.enred.cl/rest/api.php';
+  private apiUrl = 'http://tmp.enred.cl/rest/get_ficha_id.php';
 
-
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   obtenerRegiones(): Observable<any> {
     return this.http.get('http://tmp.enred.cl/get_region.php');
   }
 
-  
-}
-
- 
-
+  buscarFichaPorRut(rutAlumno: string): Observable<any> {
+    const url = `${this.apiUrl}?nombreFuncion=buscarFichaPorRut&rut_alumno=${rutAlumno}`;
+    return this.http.get(url);
+  }
+  }

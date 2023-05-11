@@ -1,9 +1,8 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
-
 
 @Component({
   selector: 'app-ficha-alumno',
@@ -11,30 +10,33 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./ficha-alumno.page.scss'],
 })
 export class FichaAlumnoPage implements OnInit {
+  fichas: any = {};
+  rutAlumno: string = '';
 
-  // fichas: any[] = [];
-  // numRunAlumno: string = '';
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    private menuCtrl: MenuController
+  ) {}
 
-  constructor(private apiService:ApiService,
-              private router:Router,
-              private menuCtrl:MenuController) { }
+  ngOnInit() {}
+
+  async buscarFicha() {
+    try {
+      const response: any = await this.apiService.buscarFichaPorRut(this.rutAlumno).toPromise();
+      console.log(response); // Imprimir el resultado en la consola
   
-
-  ngOnInit() {
+      if (response.success) {
+        this.fichas = response.data;
+      } else {
+        // Mostrar mensaje de error si no se encontró la ficha
+      }
+    } catch (error) {
+      // Manejar errores de la solicitud
+    }
   }
-  // buscarFichas(numRunAlumno: string) {
-  //   this.apiService.obtenerFichaPorAlumno(numRunAlumno).subscribe((data: any[]) => {
-  //     this.fichas = data.filter(ficha => ficha.alumno_numrun_alu === numRunAlumno);
-  //   }, (error: HttpErrorResponse) => {
-  //     console.log(error);
-  //   });
-  // }
 
-
-  
-  onClick(){
+  onClick() {
     this.menuCtrl.toggle();
   }
-
-
 }
