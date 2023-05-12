@@ -14,4 +14,5 @@ describe('FichaAlumnoPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
 });

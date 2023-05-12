@@ -31,4 +31,7 @@ export class MenuPrincipalComponent  implements OnInit {
   ir_eventos(){
     this.router.navigate(['/eventos'])
   }
+  ir_ficha(){
+    this.router.navigate(['/ficha-alumno'])
+  }
 }

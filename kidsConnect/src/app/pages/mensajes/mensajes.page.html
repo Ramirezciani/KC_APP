@@ -1,28 +1,47 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="toolbar">
     <ion-buttons>
-      <ion-button >
+      <ion-button>
         <ion-title> Mensajes</ion-title>
         <ion-icon slot="start" name="menu"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content class="ion-padding">
-  <ion-card>
+  <ion-card class="menucolor">
     <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      <ion-card-title>Mensajes Recibidos</ion-card-title>
+      <ion-card-subtitle>Bandeja Entrada</ion-card-subtitle>
     </ion-card-header>
   
-    <ion-card-content>
-      <ion-list>
-        <ion-item *ngFor="let region of regiones">
-          <ion-label>{{ region.id_region }}</ion-label>
-          <ion-label>{{ region.nom_reg }}</ion-label>
-        </ion-item>
-      </ion-list>
+    <ion-card-content class="toolbar"> 
+      
     </ion-card-content>
   </ion-card>
-  
+
+  <ion-list >
+    <ion-card class="menucolor" *ngFor="let mensaje of mensajes">
+      <ion-card-header>
+        <ion-card-subtitle>Fecha</ion-card-subtitle>
+        <ion-card-title>{{ mensaje.fec_msj }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item class="toolbar">
+          <ion-text>{{ mensaje.con_msj }}</ion-text>
+        </ion-item>
+        <ion-item class="toolbar">
+          <ion-label>Enviado por:</ion-label>
+          <ion-text>{{ mensaje.usuario_nunrun_us }}</ion-text>
+        </ion-item>
+        <ion-item class="toolbar">
+          <ion-label>Imagen</ion-label>
+          <ion-text>{{ mensaje.img_mjs }}</ion-text>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
 </ion-content>
+
+

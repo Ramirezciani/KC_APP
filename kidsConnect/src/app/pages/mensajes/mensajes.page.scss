@@ -1,7 +1,7 @@
 
 *{
     text-align: center;
-    color: #ff6a00;
+    color: black;
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 a{
@@ -24,3 +24,9 @@ ion-list{
     background-color: transparent;
     border-radius: 5px;
 }
+
+ion-card-content ion-item ion-label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }

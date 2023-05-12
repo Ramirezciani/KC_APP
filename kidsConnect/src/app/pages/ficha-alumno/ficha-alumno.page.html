@@ -11,17 +11,17 @@
 
 <ion-content>
   <ion-item class="menucolor">
-    <ion-label position="stacked" >RUT del alumno</ion-label>
-    <ion-input [(ngModel)]="rutAlumno" type="text"></ion-input>
+    <ion-label  position="floating">RUT del Alumno</ion-label>
+    <ion-input [(ngModel)]="rutAlumno" type="number" placeholder="sin guión ni dígito verificador"></ion-input>
   </ion-item>
 
-  <ion-button id="btn-buscar" class="boton_aceptar"expand="full" (click)="buscarFicha()">Buscar ficha</ion-button>
+  <ion-button  id="btn-buscar" class="boton_aceptar"expand="full" (click)="buscarFicha()">Buscar ficha</ion-button>
 
   <ion-card class="menucolor">
     <ion-card-header>
-      <ion-card-title>Rut Alumno:{{ fichas.alumno_numrun_alu }}</ion-card-title>
+      <ion-card-title>Rut Alumno: {{ fichas.alumno_numrun_alu }}</ion-card-title>
       <ion-card-subtitle>Cod Ficha: {{ fichas.id_fch }}</ion-card-subtitle>
-      <ion-card-subtitle>Periodo: {{ fichas.per_fch }}</ion-card-subtitle>
+      <ion-card-subtitle>Fecha de Creación: {{ fichas.per_fch }}</ion-card-subtitle>
     </ion-card-header>
   </ion-card>
 

@@ -12,6 +12,9 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
+  obtenerMensajesAll(): Observable<any>{
+    return this.http.get('http://tmp.enred.cl/rest/get_mensaje_all.php')
+  }
   obtenerRegiones(): Observable<any> {
     return this.http.get('http://tmp.enred.cl/get_region.php');
   }
