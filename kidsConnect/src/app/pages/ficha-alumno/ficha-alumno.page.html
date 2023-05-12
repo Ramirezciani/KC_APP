@@ -1,11 +1,10 @@
-
 <ion-header [translucent]="true">
   <ion-toolbar class="toolbar">
     <ion-buttons>
       <ion-button (click)="onClick()">
-        <ion-title> Ficha Alumno</ion-title>
         <ion-icon slot="start" name="menu"></ion-icon>
       </ion-button>
+      <ion-title> Ficha Alumno</ion-title>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -16,7 +15,7 @@
     <ion-input [(ngModel)]="rutAlumno" type="text"></ion-input>
   </ion-item>
 
-  <ion-button class="boton_aceptar"expand="full" (click)="buscarFicha()">Buscar ficha</ion-button>
+  <ion-button id="btn-buscar" class="boton_aceptar"expand="full" (click)="buscarFicha()">Buscar ficha</ion-button>
 
   <ion-card class="menucolor">
     <ion-card-header>
