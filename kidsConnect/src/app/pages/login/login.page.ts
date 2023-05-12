@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { DbService } from 'src/app/services/db.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -26,9 +25,9 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    this.dbService.validateUser(this.username, this.password)
-      .subscribe((valid: boolean) => {
-        if (valid) {
+    this.dbService.canActivate(this.username, this.password)
+      .then(validCredentials => {
+        if (validCredentials) {
           // Credenciales válidas, permitir el acceso al sistema
           this.router.navigate(['/principal']);
         } else {
@@ -36,7 +35,8 @@ export class LoginPage implements OnInit {
           console.error('Credenciales inválidas');
           // Mostrar mensaje de error al usuario
         }
-      }, (error: any) => {
+      })
+      .catch(error => {
         console.error('Error en la validación de inicio de sesión:', error);
         // Mostrar mensaje de error al usuario
       });
