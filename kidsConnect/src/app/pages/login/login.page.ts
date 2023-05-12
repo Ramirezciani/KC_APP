@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { DbService } from 'src/app/services/db.service';
+
 
 @Component({
   selector: 'app-login',
@@ -10,26 +12,34 @@ import { MenuController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   mostrarMenu = false;
+  username = '';
+  password = '';
 
-   //Variables del ngModel para usuario y password
-   
-
-  constructor(private router:Router,
-              private menu: MenuController) { }
+  constructor(private router: Router, private menu: MenuController, private dbService: DbService) { }
 
   ngOnInit() {
     this.menu.enable(false, 'menuPrincipal');
   }
 
-    // Funcion para validar los datos del usuario
-   
-    //funciones de navegacion
+  IrHome() {
+    this.router.navigate(['/principal']);
+  }
 
-    IrHome(){
-      this.router.navigate(['/principal'])
-    }
-
-
-
+  login() {
+    this.dbService.validateUser(this.username, this.password)
+      .subscribe((valid: boolean) => {
+        if (valid) {
+          // Credenciales válidas, permitir el acceso al sistema
+          this.router.navigate(['/principal']);
+        } else {
+          // Credenciales inválidas, mostrar mensaje de error al usuario
+          console.error('Credenciales inválidas');
+          // Mostrar mensaje de error al usuario
+        }
+      }, (error: any) => {
+        console.error('Error en la validación de inicio de sesión:', error);
+        // Mostrar mensaje de error al usuario
+      });
+  }
 
 }

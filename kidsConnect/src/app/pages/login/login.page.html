@@ -1,33 +1,26 @@
-<ion-header [translucent]="true">
-  
-</ion-header>
+<ion-header [translucent]="true"></ion-header>
 
 <ion-content [fullscreen]="true">
   <img src="assets/logo.png" class="logo" alt="">
 
+  <form (ngSubmit)="login()">
+    <ion-item lines="full" class="menucolor">
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input type="number" [clearInput]="true" maxLength="8" required [(ngModel)]="username" name="username"></ion-input>
+    </ion-item>
+    <ion-item lines="full" class="menucolor">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" [clearInput]="true" required [(ngModel)]="password" name="password"></ion-input>
+    </ion-item>
 
+    <!-- boton aceptar -->
+    <ion-button class="button boton_aceptar" expand="block" type="submit">Ingresar</ion-button>
+    <!-- boton Cancelar -->
+    <ion-button class="button" color="danger" expand="block">Cancelar</ion-button>
+  </form>
 
-  
-  
-    <form>
-      <ion-item lines="full" class="menucolor">
-        <ion-label position="floating" >Usuario</ion-label>
-        <ion-input  type="number" [clearInput]="true" maxLength="8" required></ion-input>
-      </ion-item>
-      <ion-item lines="full" class="menucolor">
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password"  [clearInput]="true" required></ion-input>
-      </ion-item>
-    </form>
-  
-
-  
-  <!-- boton aceptar -->
-  <ion-button  class="button" class="boton_aceptar"  expand="block" (click)="IrHome()">Ingresar</ion-button>
-  <!-- boton Canelar -->
-  <ion-button class="button" color="danger" expand="block">Cancelar</ion-button>
-    <!-- link a cambiar pass -->
-  <a>¿Olvidaste tu contraseña?</a> 
+  <!-- link a cambiar pass -->
+  <a>¿Olvidaste tu contraseña?</a>
 </ion-content>
 
 <ion-footer [translucent]="false">
@@ -35,5 +28,3 @@
     <ion-title>¿Tienes problemas con tu cuenta? <a>Contáctanos</a></ion-title>
   </ion-toolbar>
 </ion-footer>
-
-
