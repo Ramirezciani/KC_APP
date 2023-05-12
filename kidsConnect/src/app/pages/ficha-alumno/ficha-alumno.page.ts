@@ -3,7 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
-
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-ficha-alumno',
   templateUrl: './ficha-alumno.page.html',
