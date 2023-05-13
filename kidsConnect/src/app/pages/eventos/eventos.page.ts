@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 @Component({
   selector: 'app-eventos',
   templateUrl: './eventos.page.html',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventosPage implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,
+              private menuCtrl: MenuController) { }
 
   ngOnInit() {
+  }
+  
+  onClick(){
+    this.menuCtrl.toggle();
+
   }
 
 }

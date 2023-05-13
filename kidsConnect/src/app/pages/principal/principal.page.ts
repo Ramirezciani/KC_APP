@@ -23,6 +23,10 @@ export class PrincipalPage implements OnInit {
     this.router.navigate(['/ficha-alumno'])
   }
 
+  ir_eventos(){
+    this.router.navigate(['/eventos'])
+  }
+
   onClick(){
     this.menuCtrl.toggle();
 
