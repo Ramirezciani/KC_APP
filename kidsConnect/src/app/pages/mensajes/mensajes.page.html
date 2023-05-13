@@ -13,7 +13,7 @@
   <ion-card class="menucolor">
     <ion-card-header>
       <ion-card-title>Mensajes Recibidos</ion-card-title>
-      <ion-card-subtitle>Bandeja Entrada</ion-card-subtitle>
+      <ion-card-subtitle>Bandeja de Entrada</ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content class="toolbar"> 
@@ -37,6 +37,18 @@
       <ion-text>{{ mensaje.img_mjs }}</ion-text>
       <ion-label>Enviado por:</ion-label>
       <ion-text>{{ mensaje.usuario_nunrun_us }}</ion-text>
+    </ion-card>
+
+
+    <ion-card class="menucolor">
+      <ion-card-header>
+        <ion-card-title>Enviar Mensaje</ion-card-title>
+        <ion-card-subtitle>Bandeja de Salida</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content class="toolbar"> 
+        <ion-button (click)="ir_send()">Crear Mensaje Nuevo</ion-button>
+      </ion-card-content>
     </ion-card>
   </ion-list>
 </ion-content>

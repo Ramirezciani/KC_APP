@@ -52,4 +52,8 @@ export class MensajesPage implements OnInit {
 
   }
 
+  ir_send(){
+    this.router.navigate(['/enviar-mensaje'])
+  }
+
 }
