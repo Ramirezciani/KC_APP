@@ -3,7 +3,7 @@
 <ion-content [fullscreen]="true">
   <img src="assets/logo.png" class="logo" alt="">
 
-  <form (ngSubmit)="login()">
+  <form >  
     <ion-item lines="full" class="menucolor">
       <ion-label position="floating">Usuario</ion-label>
       <ion-input type="number" [clearInput]="true" maxLength="8" required [(ngModel)]="username" name="username"></ion-input>
@@ -14,7 +14,7 @@
     </ion-item>
 
     <!-- Botón Aceptar -->
-    <ion-button class="button boton_aceptar" expand="block" type="submit">Ingresar</ion-button>
+    <ion-button class="button boton_aceptar" expand="block" type="submit" (click)="IrHome()" >Ingresar</ion-button>
     <!-- Botón Cancelar -->
     <ion-button class="button" color="danger" expand="block">Cancelar</ion-button>
   </form>
@@ -28,3 +28,6 @@
     <ion-title>¿Tienes problemas con tu cuenta? <a>Contáctanos</a></ion-title>
   </ion-toolbar>
 </ion-footer>
+
+
+<!-- (ngSubmit)="login()"  ESTO VA EN EL <FORM (ngSubmit)="login()">-->

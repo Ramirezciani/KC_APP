@@ -34,4 +34,13 @@ export class MenuPrincipalComponent  implements OnInit {
   ir_ficha(){
     this.router.navigate(['/ficha-alumno'])
   }
+
+
+  logout() {
+    // Elimina los datos de sesión almacenados en el localStorage
+    localStorage.removeItem('nombre_de_tu_item');
+    
+    // Navega a la página de inicio de sesión o a la página deseada
+    this.router.navigate(['/login']);
+  }
 }

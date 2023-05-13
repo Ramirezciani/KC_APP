@@ -12,7 +12,7 @@
 
 a{
     padding: 5px;
-    color: #574345;
+    color: black;
     text-shadow: 1px;
     position: relative;
 }
@@ -34,3 +34,7 @@ ion-list{
     border-radius: 5px;
 }
 
+ion-datetime{
+    color: black;
+    background-color: lightblue;
+}

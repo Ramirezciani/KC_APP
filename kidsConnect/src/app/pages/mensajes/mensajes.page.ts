@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 
 interface Mensaje {
@@ -20,7 +21,8 @@ interface Mensaje {
 export class MensajesPage implements OnInit {
   mensajes: Mensaje[] = [];
 
-  constructor(private router: Router, private apiService: ApiService) {}
+  constructor(private router: Router, private apiService: ApiService,
+              private menuCtrl:MenuController) {}
 
   ngOnInit() {
     this.cargarMensajes();
@@ -44,4 +46,10 @@ export class MensajesPage implements OnInit {
   ir_home() {
     this.router.navigate(['/principal']);
   }
+
+  onClick(){
+    this.menuCtrl.toggle();
+
+  }
+
 }
