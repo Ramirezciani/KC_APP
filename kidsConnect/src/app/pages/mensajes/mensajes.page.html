@@ -27,19 +27,16 @@
         <ion-card-subtitle>Fecha</ion-card-subtitle>
         <ion-card-title>{{ mensaje.fec_msj }}</ion-card-title>
       </ion-card-header>
+      <ion-label>Mensajes</ion-label>
       <ion-card-content>
         <ion-item class="toolbar">
           <ion-text>{{ mensaje.con_msj }}</ion-text>
         </ion-item>
-        <ion-item class="toolbar">
-          <ion-label>Enviado por:</ion-label>
-          <ion-text>{{ mensaje.usuario_nunrun_us }}</ion-text>
-        </ion-item>
-        <ion-item class="toolbar">
-          <ion-label>Imagen</ion-label>
-          <ion-text>{{ mensaje.img_mjs }}</ion-text>
-        </ion-item>
       </ion-card-content>
+      <ion-label></ion-label>
+      <ion-text>{{ mensaje.img_mjs }}</ion-text>
+      <ion-label>Enviado por:</ion-label>
+      <ion-text>{{ mensaje.usuario_nunrun_us }}</ion-text>
     </ion-card>
   </ion-list>
 </ion-content>

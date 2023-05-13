@@ -15,9 +15,9 @@ export class ApiService {
   obtenerMensajesAll(): Observable<any>{
     return this.http.get('http://tmp.enred.cl/rest/get_mensaje_all.php')
   }
-  obtenerRegiones(): Observable<any> {
-    return this.http.get('http://tmp.enred.cl/get_region.php');
-  }
+  // obtenerRegiones(): Observable<any> {
+  //   return this.http.get('http://tmp.enred.cl/get_region.php');
+  // }
 
   buscarFichaPorRut(rutAlumno: string): Observable<any> {
     const url = `${this.apiUrl}?nombreFuncion=buscarFichaPorRut&rut_alumno=${rutAlumno}`;
