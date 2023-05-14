@@ -37,6 +37,10 @@ const routes: Routes = [
     path: 'enviar-mensaje',
     loadChildren: () => import('./pages/enviar-mensaje/enviar-mensaje.module').then( m => m.EnviarMensajePageModule)
   },
+  {
+    path: 'recuperar-pass',
+    loadChildren: () => import('./pages/recuperar-pass/recuperar-pass.module').then( m => m.RecuperarPassPageModule)
+  },
 
 
 

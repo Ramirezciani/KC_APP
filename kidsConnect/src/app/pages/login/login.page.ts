@@ -24,6 +24,10 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/principal']);
   }
 
+  Ir_recuperar(){
+    this.router.navigate(['/recuperar-pass'])
+  }
+
   // login() {
   //   this.dbService.canActivate(this.username, this.password)
   //     .then(validCredentials => {
