@@ -31,6 +31,10 @@ export class FichaAlumnoPage implements OnInit {
   
       if (response.success) {
         this.fichas = response.data;
+        if (!this.fichas || Object.keys(this.fichas).length === 0) {
+          // Mostrar mensaje si no hay datos de la ficha
+          this.presentToast('bottom', 'No se encontraron datos para el alumno ingresado.');
+        }
       } else {
         // Mostrar mensaje de error si no se encontró la ficha
         this.presentToast('bottom', 'No se encontraron datos para el alumno ingresado.');
@@ -40,6 +44,8 @@ export class FichaAlumnoPage implements OnInit {
       
     }
   }
+  
+  
 
   onClick() {
     this.menuCtrl.toggle();
