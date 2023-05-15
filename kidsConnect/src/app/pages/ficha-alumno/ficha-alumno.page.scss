@@ -44,9 +44,13 @@ ion-item{
 // Informacion de la ficha
 
 .expediente-alumno {
-    border: 1px  solid orange;
-    padding: 20px;
     
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    border: 2px solid blue; /* Agrega esta línea para el borde */
+    box-sizing: border-box; /* Asegura que el borde esté incluido en el tamaño total de la imagen */
+    border-radius: 30px;
   }
   
   .datos-personales ul {
