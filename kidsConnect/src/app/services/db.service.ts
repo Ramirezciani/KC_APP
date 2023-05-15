@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { catchError, tap, map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,58 +11,33 @@ export class DbService {
 
   constructor(private router: Router, private http: HttpClient) { }
 
-  canActivate(): Observable<boolean> {
-    const rut_user = ''; // Obtén el valor del campo de usuario de tu formulario
-    const pass_user = ''; // Obtén el valor del campo de contraseña de tu formulario
-
-    return this.validarUsuario(rut_user, pass_user).pipe(
-      tap(response => console.log('Respuesta del servidor:', response)),
-      catchError(error => {
-        console.error('Error al llamar a la API:', error);
-        return of(null); // Devuelve un observable nulo para que la suscripción pueda continuar
-      }),
-      map(response => {
-        if (response && response.success) {
-          // Los datos de inicio de sesión son válidos, redirige a la página principal
-          this.router.navigate(['/principal']);
-          return false;
-        } else {
-          // Los datos de inicio de sesión son inválidos, permite el acceso
-          return true;
-        }
-      })
-    );
+  canActivate(): Promise<boolean> {
+    const credentials = this.retrieveCredentialsFromStorage();
+    if (credentials) {
+      return this.validateCredentials(credentials.rut, credentials.password);
+    } else {
+      // Credenciales no encontradas, redirigir al login
+      this.router.navigate(['/login']);
+      return Promise.resolve(false);
+    }
   }
 
-  validarUsuario(rut_user: string, pass_user: string): Observable<any> {
-    const body = {
-      function: 'validarUsuario',
-      rut_user: rut_user,
-      pass_user: pass_user
-    };
-
-    return this.http.post(this.apiURL, body).pipe(
-      tap(response => console.log('Respuesta del servidor:', response)),
-      catchError(error => {
-        console.error('Error al llamar a la API:', error);
-        return of({ success: false }); // Devuelve una respuesta falsa en caso de error
-      }),
-      map((response: any) => {
-        if (response && response.function === 'validarUsuario') {
-          // La función de inicio de sesión existe en el archivo PHP
-          if (response.success === 'true') {
-            // El inicio de sesión fue exitoso
-            return { success: true };
-          } else {
-            // El inicio de sesión falló
-            return { success: false };
-          }
-        } else {
-          // La función de inicio de sesión no existe en el archivo PHP
-          console.error('La función de inicio de sesión no es válida.');
-          return { success: false };
-        }
+  validateCredentials(rut: string, password: string): Promise<boolean> {
+    return this.http.post<any>(`${this.apiURL}/login`, { rut, password }).toPromise()
+      .then(response => {
+        // Los datos son válidos, permitir el acceso
+        return true;
       })
-    );
+      .catch(error => {
+        // Los datos son inválidos, redirigir al login
+        this.router.navigate(['/login']);
+        return false;
+      });
+    }
+
+  retrieveCredentialsFromStorage(): { rut: string, password: string } | null {
+    // Implementa la lógica para recuperar las credenciales almacenadas, por ejemplo, desde el almacenamiento local
+    // Retorna un objeto con las credenciales { rut, password } o null si no se encontraron
+    return null;
   }
 }

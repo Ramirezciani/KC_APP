@@ -12,30 +12,37 @@ import { DbService } from 'src/app/services/db.service';
 })
 export class LoginPage {
 
-  rut: number | string = ''; // Puedes usar number o string según el tipo de dato del campo "rut" en tu formulario
+
+
+  rut: string = '';
   password: string = '';
 
-  constructor(private router: Router, private dbService: DbService) {}
+  constructor(private router: Router, private dbService: DbService) { }
 
   login() {
-    this.dbService.validarUsuario(this.rut.toString(), this.password).pipe(
-      catchError((error: any) => {
-        console.error('Error al llamar a la API:', error);
-        return of(null); // Devuelve un observable nulo para que la suscripción pueda continuar
+    this.validateCredentials();
+  }
+  
+  validateCredentials() {
+    this.dbService.validateCredentials(this.rut, this.password)
+      .then((valid: boolean) => {
+        if (valid) {
+          // Datos válidos, redirigir a la página principal
+          this.router.navigate(['/principal']);
+        } else {
+          // Datos inválidos, mostrar mensaje de error o tomar acciones adicionales
+          console.log('Datos inválidos');
+        }
       })
-    ).subscribe((response: any) => {
-      if (response && response.success) {
-        // Inicio de sesión exitoso, redirigir a la página principal
-        this.router.navigate(['/principal']);
-      } else {
-        // Inicio de sesión fallido, mostrar mensaje de error o redirigir a la página de inicio de sesión nuevamente
-      }
-    }, (error: any) => {
-      console.error('Error al suscribirse a la respuesta:', error);
-    });
+      .catch((error: any) => {
+        // Error en la validación de las credenciales, mostrar mensaje de error o tomar acciones adicionales
+        console.log('Error en la validación de las credenciales:', error);
+      });
   }
 
+
   Ir_recuperar(){
-    this.router.navigate(['/recuperar-pass']);
+    this.router.navigate(['/recuperar-pass'])
   }
-}
+  }
+  
