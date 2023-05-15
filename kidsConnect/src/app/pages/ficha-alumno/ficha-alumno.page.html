@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<!-- <ion-content>
   <ion-item class="menucolor">
     <ion-label  position="floating">RUT del Alumno</ion-label>
     <ion-input [(ngModel)]="rutAlumno" type="number" placeholder="sin guión ni dígito verificador"></ion-input>
@@ -30,8 +30,84 @@
       <ion-card-subtitle>Contenido:{{ fichas.des_fch }}</ion-card-subtitle>
     </ion-card-content>
     </ion-card>
-</ion-content>
+</ion-content> -->
 
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      Búsqueda de Ficha
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">RUT del Alumno</ion-label>
+        <ion-input [(ngModel)]="rutAlumno"></ion-input>
+      </ion-item>
+      <ion-button expand="full" (click)="buscarFicha()">Buscar</ion-button>
+    </ion-card-content>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>Código de Ficha</ion-label>
+          <ion-note>{{ fichas.cod_fc }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Nombre</ion-label>
+          <ion-note>{{ fichas.nom_alu }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Apellido Paterno</ion-label>
+          <ion-note>{{ fichas.ap_pat_alu }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Apellido Materno</ion-label>
+          <ion-note>{{ fichas.ap_mat_alu }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Fecha de Creación</ion-label>
+          <ion-note>{{ fichas.fec_cre }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Condiciones de Ficha</ion-label>
+          <ion-note>{{ fichas.con_fc }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Imagen</ion-label>
+          <ion-note>{{ fichas.img_est }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>RUT del Alumno</ion-label>
+          <ion-note>{{ fichas.alumno_rut_alu }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Código de Curso del Alumno</ion-label>
+          <ion-note>{{ fichas.alumno_cod_cur }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Código de Nivel del Alumno</ion-label>
+          <ion-note>{{ fichas.alumno_cod_niv }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>RUT del Usuario</ion-label>
+          <ion-note>{{ fichas.alumno_rut_us }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Código de Jardín</ion-label>
+          <ion-note>{{ fichas.alumno_cod_jar }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Código de Tipo de Usuario</ion-label>
+          <ion-note>{{ fichas.alumno_cod_tip }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Código de Jornada del Alumno</ion-label>
+          <ion-note>{{ fichas.alumno_cod_jor }}</ion-note>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
 
 
 
