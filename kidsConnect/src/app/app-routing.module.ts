@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { DbService } from './services/db.service';
 
 
 const routes: Routes = [
@@ -15,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'principal',
-    loadChildren: () => import('./pages/principal/principal.module').then( m => m.PrincipalPageModule)
+    loadChildren: () => import('./pages/principal/principal.module').then( m => m.PrincipalPageModule), canActivate : [DbService]
   },
   
   {
@@ -33,7 +34,8 @@ const routes: Routes = [
   {
     path: 'eventos',
     loadChildren: () => import('./pages/eventos/eventos.module').then( m => m.EventosPageModule)
-  },  {
+  },
+  {
     path: 'enviar-mensaje',
     loadChildren: () => import('./pages/enviar-mensaje/enviar-mensaje.module').then( m => m.EnviarMensajePageModule)
   },

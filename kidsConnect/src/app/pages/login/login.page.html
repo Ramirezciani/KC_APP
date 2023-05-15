@@ -3,10 +3,10 @@
 <ion-content [fullscreen]="true">
   <img src="assets/logo.png" class="logo" alt="">
 
-  <form >  
+  <form (ngSubmit)="login()">  
     <ion-item lines="full" class="menucolor">
       <ion-label position="floating">Usuario</ion-label>
-      <ion-input type="number" [clearInput]="true" maxLength="8" required [(ngModel)]="username" name="username"></ion-input>
+      <ion-input type="number" [clearInput]="true" maxLength="8" required [(ngModel)]="rut" name="rut"></ion-input>
     </ion-item>
     <ion-item lines="full" class="menucolor">
       <ion-label position="floating">Contraseña</ion-label>
@@ -14,14 +14,14 @@
     </ion-item>
 
     <!-- Botón Aceptar -->
-    <ion-button class="button boton_aceptar" expand="block" type="submit" (click)="IrHome()" >Ingresar</ion-button>
+    <ion-button class="button boton_aceptar" expand="block" type="submit">Ingresar</ion-button>
     <!-- Botón Cancelar -->
     <ion-button class="button" color="danger" expand="block">Cancelar</ion-button>
   </form>
 
   <!-- Enlace para cambiar contraseña -->
   <ion-label id="pass">¿Problemas con tu contraseña?</ion-label><br>
-  <ion-button (click)="Ir_recuperar()">Recuperala o cambiala </ion-button>
+  <ion-button (click)="Ir_recuperar()">Recupérala o cámbiala</ion-button>
 </ion-content>
 
 <ion-footer [translucent]="false">
@@ -29,6 +29,3 @@
     <ion-title><a>Contáctanos</a></ion-title>
   </ion-toolbar>
 </ion-footer>
-
-
-<!-- (ngSubmit)="login()"  ESTO VA EN EL <FORM (ngSubmit)="login()">-->
