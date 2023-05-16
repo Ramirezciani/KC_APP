@@ -11,7 +11,7 @@ import { MenuPrincipalComponent } from './components/menu-principal/menu-princip
 
 @NgModule({
   declarations: [AppComponent, MenuPrincipalComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule], // Agrega FormsModule aquí
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule], 
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   exports: [MenuPrincipalComponent],
   bootstrap: [AppComponent],

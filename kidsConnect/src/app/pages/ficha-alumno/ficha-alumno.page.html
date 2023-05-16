@@ -32,14 +32,13 @@
     <img alt="Silhouette of mountains" src="assets/boyuser.svg" />
     <div class="datos-personales">
       <h6>Fecha Creacion: {{ fichas.fec_cre }} </h6>
-      <h6>Formato fecha: AAAA/MM/DD </h6>
       <h3>Datos Personales</h3>
       <ul>
         <li><strong>Nombre:</strong> {{ fichas.nom_alu }} </li>
         
         <li><strong>Apellido Paterno:</strong> {{ fichas.ap_pat_alu }} </li>
         <li><strong>Apellido Materno:</strong> {{ fichas.ap_mat_alu }} </li>
-        <li><strong>Curso :</strong>{{ fichas.nom_cur }}</li> 
+        <li><strong>Curso :</strong>{{ fichas?.nom_cur}}</li> 
       </ul>
     </div>
     
