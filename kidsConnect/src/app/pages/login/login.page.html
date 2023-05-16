@@ -5,18 +5,18 @@
 
   <form (ngSubmit)="login()">  
     <ion-item lines="full" class="menucolor">
-      <ion-label position="floating">Usuario</ion-label>
-      <ion-input type="number" [clearInput]="true" maxLength="8"  [(ngModel)]="rut" name="rut"></ion-input>
+      <ion-label position="floating">Primer RUT</ion-label>
+      <ion-input type="text" [clearInput]="true" maxLength="8"  [(ngModel)]="rut" name="rut"></ion-input>
     </ion-item>
     <ion-item lines="full" class="menucolor">
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" [clearInput]="true" [(ngModel)]="password" name="password"></ion-input>
+      <ion-label position="floating">Segundo RUT</ion-label>
+      <ion-input type="text" [clearInput]="true" [(ngModel)]="password" name="password"></ion-input>
     </ion-item>
 
     <!-- Botón Aceptar -->
     <ion-button class="button boton_aceptar" expand="block" type="submit">Ingresar</ion-button>
     <!-- Botón Cancelar -->
-    <ion-button class="button" color="danger" expand="block">Cancelar</ion-button>
+    <ion-button class="button" color="danger" expand="block" (click)="cancelar()">Cancelar</ion-button>
   </form>
 
   <!-- Enlace para cambiar contraseña -->

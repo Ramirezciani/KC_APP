@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -23,17 +22,30 @@ export class DbService {
   }
 
   validateCredentials(rut: string, password: string): Promise<boolean> {
-    return this.http.post<any>(`${this.apiURL}/login`, { rut, password }).toPromise()
+    const credentials = {
+      rut: rut,
+      password: password
+    };
+
+    return this.http.post<any>(this.apiURL, credentials).toPromise()
       .then(response => {
-        // Los datos son válidos, permitir el acceso
-        return true;
+        if (response && response.message === 'Datos válidos') {
+          console.log(response); // Las credenciales son válidas
+          return true;
+        } else {
+          // Las credenciales son inválidas, redirigir al login
+          this.router.navigate(['/login']);
+          return false;
+        }
       })
       .catch(error => {
-        // Los datos son inválidos, redirigir al login
+        // Error en la petición o en la validación de las credenciales
+        console.log('Error en la validación de las credenciales:', error);
+        // Redirigir al login
         this.router.navigate(['/login']);
         return false;
       });
-    }
+  }
 
   retrieveCredentialsFromStorage(): { rut: string, password: string } | null {
     // Implementa la lógica para recuperar las credenciales almacenadas, por ejemplo, desde el almacenamiento local

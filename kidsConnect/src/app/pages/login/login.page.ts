@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
 import { DbService } from 'src/app/services/db.service';
 
 @Component({
@@ -11,9 +9,6 @@ import { DbService } from 'src/app/services/db.service';
   styleUrls: ['login.page.scss']
 })
 export class LoginPage {
-
-
-
   rut: string = '';
   password: string = '';
 
@@ -22,7 +17,7 @@ export class LoginPage {
   login() {
     this.validateCredentials();
   }
-  
+
   validateCredentials() {
     this.dbService.validateCredentials(this.rut, this.password)
       .then((valid: boolean) => {
@@ -40,9 +35,12 @@ export class LoginPage {
       });
   }
 
+  cancelar() {
+    // Acción del botón Cancelar
+    console.log('Cancelar');
+  }
 
-  Ir_recuperar(){
-    this.router.navigate(['/recuperar-pass'])
+  Ir_recuperar() {
+    this.router.navigate(['/recuperar-pass']);
   }
-  }
-  
+}
