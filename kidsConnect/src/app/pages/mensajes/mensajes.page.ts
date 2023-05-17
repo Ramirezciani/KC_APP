@@ -4,13 +4,15 @@ import { MenuController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 
 interface Mensaje {
-  id_msj: number;
-  con_msj: string;
-  fec_msj: string;
-  img_mjs: string;
-  tipo_mensaje_id_msj: number;
-  apoderado_id_apo: number;
-  usuario_nunrun_us: string;
+  cod_mensaje: string; 
+  fch_crea: string; 
+  img_msj: string;
+  cont_msj: string; 
+  tip_msj_cod_tip_m: number; 
+  usuario_rut_us: number;
+  usuario_tipo_us_cod_tip: number; 
+  nom_tip_m: string;
+
 }
 
 @Component({
@@ -20,6 +22,7 @@ interface Mensaje {
 })
 export class MensajesPage implements OnInit {
   mensajes: Mensaje[] = [];
+  filtroMensaje: string = '';
 
   constructor(private router: Router, private apiService: ApiService,
               private menuCtrl:MenuController) {}
