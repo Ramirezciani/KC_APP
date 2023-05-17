@@ -29,7 +29,7 @@ export class FichaAlumnoPage implements OnInit {
       const response: any = await this.apiService.buscarFichaPorRut(this.rutAlumno).toPromise();
       console.log(response); // Imprimir el resultado en la consola
   
-      if (response.success) {
+      if (response && response.success) {
         this.fichas = response.data;
         if (!this.fichas || Object.keys(this.fichas).length === 0) {
           // Mostrar mensaje si no hay datos de la ficha
@@ -41,7 +41,8 @@ export class FichaAlumnoPage implements OnInit {
       }
     } catch (error) {
       // Manejar errores de la solicitud
-      
+      console.error('Error al buscar la ficha del alumno:', error);
+      this.presentToast('bottom', 'Ocurrió un error al buscar la ficha del alumno.');
     }
   }
   

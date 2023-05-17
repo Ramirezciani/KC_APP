@@ -21,7 +21,8 @@ export class ApiService {
   // }
 
   buscarFichaPorRut(rutAlumno: string): Observable<any> {
-    const url = `${this.apiUrl}?nombreFuncion=buscarFichaPorRut&rut_alumno=${rutAlumno}`;
+    const encodedRut = encodeURIComponent(rutAlumno);
+    const url = `${this.apiUrl}?nombreFuncion=buscarFichaPorRut&rut_alumno=${encodedRut}`;
     return this.http.get(url);
   }
 
