@@ -34,7 +34,7 @@ ion-item{
 
 
 
-#btn-buscar{
+.boton_aceptar{
     border: solid  1px;
     margin: 20px;
     border-radius: 8px;
@@ -43,34 +43,9 @@ ion-item{
 
 // Informacion de la ficha
 
-.expediente-alumno {
-    
-    display: block;
-    margin-left: 2px;
-    margin-right: 2px;
-    // border: 2px solid blue; /* Agrega esta línea para el borde */
-    // box-sizing: border-box; /* Asegura que el borde esté incluido en el tamaño total de la imagen */
-    // border-radius: 30px;
-  }
   
-  .datos-personales ul {
-    list-style-type: none;
-    padding: 0;
-  }
   
-  .calificaciones table {
-    width: 100%;
-  }
-  
-  .calificaciones th,
-  .calificaciones td {
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .observaciones p {
-    margin: 0;
-  }
+
 
 
   img {

@@ -5,12 +5,12 @@
 
   <form (ngSubmit)="login()">  
     <ion-item lines="full" class="menucolor">
-      <ion-label position="floating">Primer RUT</ion-label>
-      <ion-input type="text" [clearInput]="true" maxLength="8"  [(ngModel)]="rut" name="rut"></ion-input>
+      <ion-label position="floating">RUT</ion-label>
+      <ion-input type="text" [clearInput]="true" maxLength="8"  [(ngModel)]="rut" name="rut"><ion-icon name="person-circle-outline"></ion-icon></ion-input>
     </ion-item>
     <ion-item lines="full" class="menucolor">
-      <ion-label position="floating">Segundo RUT</ion-label>
-      <ion-input type="text" [clearInput]="true" [(ngModel)]="password" name="password"></ion-input>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="text" [clearInput]="true" [(ngModel)]="password" name="password"><ion-icon name="key-outline"></ion-icon></ion-input>
     </ion-item>
 
     <!-- Botón Aceptar -->
