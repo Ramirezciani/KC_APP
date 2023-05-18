@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class ApiService {
   private objetoAlumno: any = {};
 
-  private apiUrl = 'http://tmp.enred.cl/rest/get_ficha_id.php';
+  private apiUrl = 'http://tmp.enred.cl/kc/rest/get_ficha_id.php';
   
   constructor(private http: HttpClient) {}
 
