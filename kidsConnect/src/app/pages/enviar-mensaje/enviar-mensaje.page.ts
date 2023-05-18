@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-enviar-mensaje',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EnviarMensajePage implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,
+              private menuCtrl:MenuController) { }
 
   ngOnInit() {
   }
-
+  onClick() {
+    this.menuCtrl.toggle();
+  }
 }

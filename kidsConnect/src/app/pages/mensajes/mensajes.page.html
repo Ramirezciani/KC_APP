@@ -17,21 +17,19 @@
     </ion-card-header>
   </ion-card>
   <ion-list class="boton_aceptar">
-    <ion-card  *ngFor="let mensaje of mensajes">
+    <ion-card  *ngFor="let mensaje of mensajes" class="ficha">
       <ion-card-header>
         <ion-card-subtitle>Fecha</ion-card-subtitle>
-        <ion-card-title>{{ mensaje.fch_crea }}</ion-card-title>
+        <ion-card-subtitle>{{ mensaje.fch_crea }}</ion-card-subtitle>
       </ion-card-header>
-      <ion-label>Mensajes</ion-label>
       <ion-card-content>
-        <ion-item class="toolbar">
-          <ion-text>{{ mensaje.cont_msj }}</ion-text>
-        </ion-item>
+        <ion-label>Enviado por: </ion-label><br>
+        <ion-text>{{ mensaje.usuario_rut_us }}</ion-text><br>
+        <ion-text>{{ mensaje.cont_msj }}</ion-text>
       </ion-card-content>
-      <ion-label></ion-label>
+      <ion-label>Imagen</ion-label>
       <ion-text>{{ mensaje.img_msj }}</ion-text>
-      <ion-label>Enviado por:</ion-label>
-      <ion-text>{{ mensaje.usuario_rut_us }}</ion-text>
+  
     </ion-card>
   </ion-list>
 

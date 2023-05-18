@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 export class ApiService {
   private objetoAlumno: any = {};
 
+  private api = 'http://tmp.enred.cl/kc/rest/post_mensaje.php';
+
   private apiUrl = 'http://tmp.enred.cl/kc/rest/get_ficha_id.php';
   
   constructor(private http: HttpClient) {}
@@ -24,6 +26,10 @@ export class ApiService {
     const encodedRut = encodeURIComponent(rutAlumno);
     const url = `${this.apiUrl}?nombreFuncion=buscarFichaPorRut&rut_alumno=${encodedRut}`;
     return this.http.get(url);
+  }
+
+  enviarMensaje(data:any){
+    return this.http.post<any>(`${this.apiUrl}`, data);
   }
 
 
