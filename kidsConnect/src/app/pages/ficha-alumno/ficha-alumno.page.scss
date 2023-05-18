@@ -74,12 +74,13 @@ ion-item{
 
 
   img {
-    height: 50%;
+    margin-top: 10px;
+    height: 20%;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 20%;
     border: 2px solid orange; /* Agrega esta línea para el borde */
     box-sizing: border-box; /* Asegura que el borde esté incluido en el tamaño total de la imagen */
-    border-radius: 30px;
+    border-radius: 50px;
   }

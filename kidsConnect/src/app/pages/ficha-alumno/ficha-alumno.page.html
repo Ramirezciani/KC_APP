@@ -26,27 +26,22 @@
      
     </ion-card-content>
   </ion-card>
-
-  <div class="expediente-alumno">
-    <h2>Ficha del Alumno: {{ fichas.alumno_rut_alu }} </h2>
-    <img alt="Silhouette of mountains" src="assets/boyuser.svg" />
-    <div class="datos-personales">
-      <h6>Fecha Creacion: {{ fichas.fec_cre }} </h6>
-      <h3>Datos Personales</h3>
-      <ul>
-        <li><strong>Nombre:</strong> {{ fichas.nom_alu }} </li>
-        
-        <li><strong>Apellido Paterno:</strong> {{ fichas.ap_pat_alu }} </li>
-        <li><strong>Apellido Materno:</strong> {{ fichas.ap_mat_alu }} </li>
-        <!-- <li><strong>Curso :</strong>{{ fichas.nom_cur}}</li>  -->
-      </ul>
-    </div>
+  <h1>Ficha Estudiante</h1>
+  <ion-card class="ficha">
     
-    <div class="observaciones">
-      <h3>Observaciones</h3>
-      <p>{{ fichas.con_fc }}</p>
-    </div>
-  </div>
+    <img alt="Silhouette of mountains" src="assets/boyuser.svg" />
+    <ion-card-header>
+      <ion-card-title>Nombre: <br> {{ fichas.nom_alu }} {{ fichas.ap_pat_alu }} {{ fichas.ap_mat_alu }}</ion-card-title>
+      <ion-card-subtitle>Rut Alumno: {{ fichas.alumno_rut_alu }}</ion-card-subtitle>
+      <ion-card-subtitle> Fecha creacion: {{ fichas.fec_cre }}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <h3>Curso: {{fichas.alumno_cod_cur}}</h3>
+      <h1>Observaciones</h1>
+      {{ fichas.con_fc }}
+    </ion-card-content>
+  </ion-card>
   
 </ion-content>
 
