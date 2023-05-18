@@ -13,7 +13,7 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   obtenerMensajesAll(): Observable<any> {
-    const url = 'http://tmp.enred.cl/rest/get_mensaje.php';
+    const url = 'http://tmp.enred.cl/kc/rest/get_mensaje.php';
     return this.http.get(url);
   }
   // obtenerRegiones(): Observable<any> {
