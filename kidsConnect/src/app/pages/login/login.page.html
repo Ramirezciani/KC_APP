@@ -1,27 +1,21 @@
 <ion-header [translucent]="true"></ion-header>
 
 <ion-content [fullscreen]="true">
-  <img src="assets/logo.png" class="logo" alt="">
-
-  <form >  
-    <ion-item lines="full" class="menucolor">
-      <ion-label position="floating">RUT</ion-label>
-      <ion-input type="text" [clearInput]="true" maxLength="8"  [(ngModel)]="rut" name="rut"><ion-icon name="person-circle-outline"></ion-icon></ion-input>
-    </ion-item>
-    <ion-item lines="full" class="menucolor">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="text" [clearInput]="true" [(ngModel)]="password" name="password"><ion-icon name="key-outline"></ion-icon></ion-input>
-    </ion-item>
-
-    <!-- Botón Aceptar -->
-    <ion-button class="button boton_aceptar" expand="block" type="submit">Ingresar</ion-button>
-    <!-- Botón Cancelar -->
-    <ion-button class="button" color="danger" expand="block" (click)="cancelar()">Cancelar</ion-button>
-  </form>
-
-  <!-- Enlace para cambiar contraseña -->
-  <ion-label id="pass">¿Problemas con tu contraseña?</ion-label><br>
-  <ion-button (click)="Ir_recuperar()">Recupérala o cámbiala</ion-button>
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Rut</ion-label>
+        <ion-input [(ngModel)]="rut" type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input [(ngModel)]="password" type="password"></ion-input>
+      </ion-item>
+    </ion-list>
+  
+    <ion-button expand="full" (click)="login()">Iniciar sesión</ion-button>
+  </ion-content>
 </ion-content>
 
 <ion-footer [translucent]="false">
