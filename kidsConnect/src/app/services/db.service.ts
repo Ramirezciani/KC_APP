@@ -1,29 +1,55 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbService {
-  apiURL = 'http://tmp.enred.cl/kc/rest/login.php';
+  private apiURL = 'http://tmp.enred.cl/rest/login.php';
 
   constructor(private router: Router, private http: HttpClient) { }
 
-  validarCredenciales(rut: string, password: string): boolean {
-    // Aquí puedes realizar la lógica para validar los datos de usuario y contraseña
-
-    // Ejemplo de validación con el dato "18275922"
-    if (rut === '18275922' && password === '18275922') {
-      // Los datos son válidos
-      return true;
+  canActivate(): Promise<boolean> {
+    const credentials = this.retrieveCredentialsFromStorage();
+    if (credentials) {
+      return this.validateCredentials(credentials.rut, credentials.password);
     } else {
-      // Los datos son inválidos
-      return false;
+      // Credenciales no encontradas, redirigir al login
+      this.router.navigate(['/login']);
+      return Promise.resolve(false);
     }
   }
 
+  validateCredentials(rut: string, password: string): Promise<boolean> {
+    const credentials = {
+      rut: rut,
+      password: password
+    };
+
+    return this.http.post<any>(this.apiURL, credentials).toPromise()
+      .then(response => {
+        if (response && response.message === 'Datos válidos') {
+          console.log(response); // Las credenciales son válidas
+          return true;
+        } else {
+          // Las credenciales son inválidas, redirigir al login
+          this.router.navigate(['/login']);
+          return false;
+        }
+      })
+      .catch(error => {
+        // Error en la petición o en la validación de las credenciales
+        console.log('Error en la validación de las credenciales:', error);
+        // Redirigir al login
+        this.router.navigate(['/login']);
+        return false;
+      });
+  }
+
+  retrieveCredentialsFromStorage(): { rut: string, password: string } | null {
+    // Implementa la lógica para recuperar las credenciales almacenadas, por ejemplo, desde el almacenamiento local
+    // Retorna un objeto con las credenciales { rut, password } o null si no se encontraron
+    return null;
+  }
 }
