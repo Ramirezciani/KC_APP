@@ -5,6 +5,7 @@ import { MenuController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 import { FormsModule } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
+import { AnimationController } from '@ionic/angular';
 
 @Component({
   selector: 'app-ficha-alumno',
@@ -14,15 +15,19 @@ import { ToastController } from '@ionic/angular';
 export class FichaAlumnoPage implements OnInit {
   fichas: any = {};
   rutAlumno: string = '';
+  presentingElement = '';
 
   constructor(
     private apiService: ApiService,
     private router: Router,
     private menuCtrl: MenuController,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private animationCtrl: AnimationController
   ) {}
 
   ngOnInit() {}
+
+  
 
   async buscarFicha() {
     try {
@@ -31,6 +36,7 @@ export class FichaAlumnoPage implements OnInit {
   
       if (response && response.success) {
         this.fichas = response.data;
+        this.presentToast('bottom', 'Ficha Encontrada presiona ver ficha.');
         if (!this.fichas || Object.keys(this.fichas).length === 0) {
           // Mostrar mensaje si no hay datos de la ficha
           this.presentToast('bottom', 'No se encontraron datos para el alumno ingresado.');
@@ -42,7 +48,7 @@ export class FichaAlumnoPage implements OnInit {
     } catch (error) {
       // Manejar errores de la solicitud
       console.error('Error al buscar la ficha del alumno:', error);
-      this.presentToast('bottom', 'Ocurrió un error al buscar la ficha del alumno.');
+      this.presentToast('bottom', 'Debe ingresar un rut.');
     }
   }
   
