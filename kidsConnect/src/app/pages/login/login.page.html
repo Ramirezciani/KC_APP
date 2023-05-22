@@ -3,7 +3,7 @@
 <ion-content [fullscreen]="true">
   <img src="assets/logo.png" class="logo" alt="">
 
-  <form (ngSubmit)="login()">  
+  <form (ngSubmit)="validarUsuario()">  
     <ion-item lines="full" class="menucolor">
       <ion-label position="floating">RUT</ion-label>
       <ion-input type="text" [clearInput]="true" maxLength="8"  [(ngModel)]="rut" name="rut"><ion-icon name="person-circle-outline"></ion-icon></ion-input>
@@ -14,9 +14,9 @@
     </ion-item>
 
     <!-- Botón Aceptar -->
-    <ion-button class="button boton_aceptar" expand="block" type="submit">Ingresar</ion-button>
+    <ion-button class="button boton_aceptar" expand="block" type="submit" >Ingresar</ion-button>
     <!-- Botón Cancelar -->
-    <ion-button class="button" color="danger" expand="block" (click)="cancelar()">Cancelar</ion-button>
+    <ion-button class="button" color="danger" expand="block" >Cancelar</ion-button>
   </form>
 
   <!-- Enlace para cambiar contraseña -->
