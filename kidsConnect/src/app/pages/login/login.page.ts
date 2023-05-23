@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { DbService } from 'src/app/services/db.service';
 import { AlertController } from '@ionic/angular';
+import { AES, enc } from 'crypto-js';
+
 @Component({
   selector: 'app-login',
   templateUrl: 'login.page.html',
