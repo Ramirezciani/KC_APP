@@ -1,7 +1,7 @@
 
 *{
     text-align: center;
-    color: #ff6a00;
+    color: black;
     font-family: 'Plus Jakarta Sans', sans-serif;
 
     
@@ -14,9 +14,10 @@ img{
     margin: auto;
 }
 
-.button{
-    margin: 10px;
-    color: white;
+ion-button{
+    border: solid  1px;
+    margin: 20px;
+    border-radius: 8px;
 }
 
 
@@ -64,4 +65,11 @@ ion-item{
     text-shadow: 2px 2px lightblue  ;
     
 }
+
+
+ion-list{
+    background-color: transparent;
+}
+
+
 

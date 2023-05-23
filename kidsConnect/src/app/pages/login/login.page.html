@@ -1,21 +1,22 @@
-<ion-header [translucent]="true"></ion-header>
+
 
 <ion-content [fullscreen]="true">
+  <img src="assets/logo3.gif" alt="">
   <ion-content>
-    <ion-list>
-      <ion-item>
+    <ion-list >
+      <ion-item  class="inputs">
         <ion-label position="floating">Rut</ion-label>
-        <ion-input [(ngModel)]="rut" type="text"></ion-input>
+        <ion-input  [(ngModel)]="rut" type="number" placeholder="Sin puntos, sin guion , sin dv"></ion-input>
       </ion-item>
   
-      <ion-item>
+      <ion-item class="inputs">
         <ion-label position="floating">Contraseña</ion-label>
         <ion-input [(ngModel)]="password" type="password"></ion-input>
       </ion-item>
     </ion-list>
   
-    <ion-button expand="full" (click)="login()">Iniciar sesión</ion-button>
-  </ion-content>
+    <ion-button  expand="full" (click)="login()">Iniciar sesión</ion-button>
+    <ion-button  expand="full" >Cancelar</ion-button>
 </ion-content>
 
 <ion-footer [translucent]="false">
