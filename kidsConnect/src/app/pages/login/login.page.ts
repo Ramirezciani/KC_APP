@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { DbService } from 'src/app/services/db.service';
 import { AlertController } from '@ionic/angular';
-import { AES, enc } from 'crypto-js';
 
 @Component({
   selector: 'app-login',
@@ -18,8 +17,8 @@ export class LoginPage {
   constructor(private router: Router, private http:HttpClient, private alert:AlertController) { }
 
   cancelar() {
-    // Acción del botón Cancelar
     console.log('Cancelar');
+  
   }
 
 login() {
@@ -67,7 +66,7 @@ presentAlert(header: string, subHeader: string, message: string) {
 }
   
 
-  Ir_recuperar() {
+  ir_recuperar() {
     this.router.navigate(['/recuperar-pass']);
   }
 }

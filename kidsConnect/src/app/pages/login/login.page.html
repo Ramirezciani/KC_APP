@@ -16,7 +16,9 @@
     </ion-list>
   
     <ion-button  expand="full" (click)="login()">Iniciar sesión</ion-button>
-    <ion-button  expand="full" >Cancelar</ion-button>
+    <ion-button color="danger" expand="full" (click)="cancelar()">Cancelar</ion-button>
+
+    <a  (click)="ir_recuperar()">Cambiar o recuperar contrasena</a>
 </ion-content>
 
 <ion-footer [translucent]="false">
