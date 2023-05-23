@@ -24,14 +24,10 @@ export class RecuperarPassPage implements OnInit {
         rut_user: this.rut_user,
         pass_user: this.pass_user
       };
-      const apiUrl = 'http://tmp.enred.cl/kc/rest/your-endpoint'; // Reemplaza con la URL correcta
+      const apiUrl = 'http://tmp.enred.cl/kc/rest/put_password.php'; // Reemplaza con la URL correcta
 
-      const headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      });
 
-      this.http.put(apiUrl, formData, { headers })
+      this.http.put(apiUrl, formData)
         .subscribe(
           response => {
             console.log('Solicitud PUT exitosa', response);
