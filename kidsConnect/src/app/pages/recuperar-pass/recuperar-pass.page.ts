@@ -7,11 +7,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   templateUrl: 'recuperar-pass.page.html',
   styleUrls: ['recuperar-pass.page.scss']
 })
-
 export class RecuperarPassPage implements OnInit {
 
-  rut_user = [];
-  pass_user = [];
+  rut_user: string = '';
+  pass_user: string = '';
+  current_password: string = '';
 
   constructor(private menuCtrl: MenuController, private http: HttpClient) { }
 
@@ -19,13 +19,13 @@ export class RecuperarPassPage implements OnInit {
   }
 
   onSubmit() {
-    if (this.rut_user && this.pass_user) {
+    if (this.rut_user && this.pass_user && this.current_password) {
       const formData = {
         rut_user: this.rut_user,
-        pass_user: this.pass_user
+        pass_user: this.pass_user,
+        current_password: this.current_password
       };
-      const apiUrl = 'http://tmp.enred.cl/kc/rest/put_password.php'; // Reemplaza con la URL correcta
-
+      const apiUrl = 'http://tmp.enred.cl/kc/rest/put_password.php'; 
 
       this.http.put(apiUrl, formData)
         .subscribe(
@@ -44,5 +44,4 @@ export class RecuperarPassPage implements OnInit {
   onClick() {
     this.menuCtrl.toggle();
   }
-
 }
