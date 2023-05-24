@@ -44,6 +44,13 @@ export class ApiService {
       return this.http.put(url, body);
     }
 
+    private Url = 'http://tmp.enred.cl/kc/rest';
+
+
+  obtenerUsuarios() {
+    const url = `${this.Url}/get_usuarios.php`;
+    return this.http.get(url);
+  }
 
 
   }

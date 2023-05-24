@@ -7,31 +7,22 @@
 <ion-content [fullscreen]="true">
   <ion-card class="menucolor">
     <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      <ion-card-title>Cambia tu Contraseña</ion-card-title>
+      
     </ion-card-header>
-    <ion-item>
-      <label for="rut">RUT:</label>
-    <input type="text" id="rut" [(ngModel)]="rutUser" placeholder="Ingrese el RUT">
-    </ion-item>
-    <ion-item>
-      <label for="password">Contraseña:</label>
-      <input type="password" id="password" [(ngModel)]="passUser" placeholder="Ingrese la contraseña">
-    </ion-item>
     <ion-card-content>
-      Here's a small text description for the card content. Nothing more, nothing less.
+    <label for="rut">RUT:</label>
+    <ion-item>
+    <input class="menucolor" type="text" id="rut" [(ngModel)]="rutUser" placeholder="Tu Rut sin guion, puntos ni guion">
+    </ion-item>
+    <label >Contraseña:</label>
+    <ion-item>
+    <input type="password" id="password" [(ngModel)]="passUser" placeholder="Ingrese la contraseña">
+    </ion-item>
+      
     </ion-card-content>
   </ion-card>
   
   <button (click)="actualizarCampo(rutUser, passUser)">Actualizar</button>
-
-  <!-- <div>
-    <label for="rut">RUT:</label>
-    <input type="text" id="rut" [(ngModel)]="rutUser" placeholder="Ingrese el RUT">
-  
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" [(ngModel)]="passUser" placeholder="Ingrese la contraseña"> 
-  
-  </div> -->
   
 </ion-content>
