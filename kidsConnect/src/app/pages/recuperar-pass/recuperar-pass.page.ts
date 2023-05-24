@@ -14,6 +14,8 @@ export class RecuperarPassPage implements OnInit {
 
   rutUser = '';
   passUser = ' ';
+  newPass = ' ';
+  confirmPass = ' ';
 
   constructor(private menuCtrl: MenuController,
               private http: HttpClient,
@@ -31,9 +33,14 @@ export class RecuperarPassPage implements OnInit {
   }
 
 
-  actualizarCampo(rutUser: string, passUser: string) {
+  actualizarCampo(rutUser: string, passUser: string, newPass: string, confirmPass: string) {
     if (!rutUser || !passUser || rutUser.trim() === '' || passUser.trim() === '') {
       this.presentToast('Por favor ingresa todos los campos', 'bottom');
+      return;
+    }
+  
+    if (newPass !== confirmPass) {
+      this.presentToast('La confirmación de contraseña no coincide', 'bottom');
       return;
     }
   
@@ -47,8 +54,16 @@ export class RecuperarPassPage implements OnInit {
           this.presentToast('El RUT no se encuentra en la base de datos', 'bottom');
           return;
         }
+        
+        // Obtener el usuario correspondiente al RUT
+        const usuario = usuarios.find(usuario => usuario.rut_us === rutUser);
+        if (passUser !== passUser) {
+          this.presentToast('La contraseña actual es incorrecta', 'bottom');
+          return;
+        }
+  
         // Continuar con la actualización del campo
-        this.apiService.actualizarUsuario(rutUser, passUser).subscribe(
+        this.apiService.actualizarUsuario(rutUser, newPass).subscribe(
           (response) => {
             console.log('Campo actualizado correctamente');
             this.presentToast('Campo actualizado correctamente', 'bottom');
