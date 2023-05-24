@@ -32,6 +32,17 @@ export class ApiService {
     return this.http.post<any>(`${this.apiUrl}`, data);
   }
 
+    //Actualizar usuario
+
+    private baseUrl = 'http://tmp.enred.cl/kc/rest'; // Reemplaza con la URL base de tu API
+
+
+    actualizarUsuario(rutUser: string, passUser: string) {
+      const url = `${this.baseUrl}/put_password.php`;
+      const body = { rut_user: rutUser, pass_user: passUser };
+    
+      return this.http.put(url, body);
+    }
 
 
 
