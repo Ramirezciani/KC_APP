@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ApiService } from 'src/app/services/api.service';
 import { ToastController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-recuperar-pass',
   templateUrl: 'recuperar-pass.page.html',
@@ -12,15 +13,20 @@ import { ToastController } from '@ionic/angular';
 
 export class RecuperarPassPage implements OnInit {
 
+  //Variables 
   rutUser = '';
-  passUser = ' ';
-  newPass = ' ';
-  confirmPass = ' ';
+  passUser = '';
+  newPass = '';
+  confirmPass = '';
+  showPassword: boolean = false;
+  nombreUser = '';
+  emailAdmin: string = 'admin@example.com';
 
   constructor(private menuCtrl: MenuController,
               private http: HttpClient,
               private apiService: ApiService, 
-              private toast:ToastController) { }
+              private toast:ToastController,
+              ) { }
 
   ngOnInit() {
   }
@@ -90,6 +96,23 @@ export class RecuperarPassPage implements OnInit {
     });
   
     toast.present();
+  }
+
+
+  show_pass() {
+    const passwordInput = document.getElementById('password') as HTMLInputElement;
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+    } else {
+      passwordInput.type = 'password';
+    }
+  }
+  
+  enviarCorreoRecuperacion(rutUser: string, nombreUser: string) {
+    const subject = 'Solicitud de recuperación de contraseña';
+    const body = `Se ha recibido una solicitud de recuperación de contraseña para el usuario con RUT ${rutUser} y nombre ${nombreUser}.`;
+
+    window.location.href = `mailto:${this.emailAdmin}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 }
 

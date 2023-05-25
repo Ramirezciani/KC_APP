@@ -19,19 +19,49 @@
       <label for="password">Contraseña actual:</label>
       <ion-item class="menucolor">
         <ion-input type="password" id="password" [(ngModel)]="passUser" placeholder="Ingrese la contraseña actual"></ion-input>
+        <ion-icon name="eye" slot="end" [name]="showPassword ? 'eye-off' : 'eye'" (click)="show_pass()"></ion-icon>
       </ion-item>
       <!-- New password -->
       <label for="newPassword">Nueva Contraseña:</label>
       <ion-item  class="menucolor">
         <ion-input type="password" id="newPassword" [(ngModel)]="newPass" placeholder="Ingrese la nueva contraseña"></ion-input>
+        
       </ion-item>
       <!-- Confirmar new password -->
       <label for="confirmPassword">Confirmar Contraseña:</label>
       <ion-item  class="menucolor">
         <ion-input type="password" id="confirmPassword" [(ngModel)]="confirmPass" placeholder="Ingrese nuevamente la nueva contraseña"></ion-input>
+        
       </ion-item>
     </ion-card-content>
   </ion-card>
 
   <ion-button (click)="actualizarCampo(rutUser, passUser, newPass, confirmPass)">Actualizar</ion-button>
+
+  <!-- Recuperar passs mediante correo -->
+  <ion-card color="medium">
+    <ion-card-header>
+      <ion-card-title>¿Olvidaste tu contraseña?</ion-card-title>
+      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <form (ngSubmit)="enviarCorreoRecuperacion(rutUser, nombreUser)">
+        <!-- Rut user -->
+        <ion-item class="menucolor">
+          <ion-label position="floating">RUT:</ion-label>
+          <ion-input type="text" [(ngModel)]="rutUser" name="rutUser"></ion-input>
+        </ion-item>
+  
+        <!-- Nombre user -->
+        <ion-item class="menucolor">
+          <ion-label position="floating">Nombre:</ion-label>
+          <ion-input type="text" [(ngModel)]="nombreUser" name="nombreUser"></ion-input>
+        </ion-item>
+  
+        <!-- Botón enviar -->
+        <ion-button type="submit">Enviar</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
