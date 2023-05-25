@@ -3,6 +3,7 @@ import { MenuController } from '@ionic/angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ApiService } from 'src/app/services/api.service';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class RecuperarPassPage implements OnInit {
               private http: HttpClient,
               private apiService: ApiService, 
               private toast:ToastController,
-              ) { }
+              private router:Router) { }
 
   ngOnInit() {
   }
@@ -113,6 +114,10 @@ export class RecuperarPassPage implements OnInit {
     const body = `Se ha recibido una solicitud de recuperación de contraseña para el usuario con RUT ${rutUser} y nombre ${nombreUser}.`;
 
     window.location.href = `mailto:${this.emailAdmin}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
+  ir_login(){
+    this.router.navigate(['/login'])
   }
 }
 
