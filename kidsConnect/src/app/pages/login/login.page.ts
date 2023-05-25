@@ -10,6 +10,8 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['login.page.scss']
 })
 export class LoginPage {
+  
+  showPassword: boolean = false;
   rut: string = '';
   password: string = '';
   public alertButtons = ['OK'];
@@ -68,5 +70,15 @@ presentAlert(header: string, subHeader: string, message: string) {
 
   ir_recuperar() {
     this.router.navigate(['/recuperar-pass']);
+  }
+
+
+  show_pass() {
+    const passwordInput = document.getElementById('password') as HTMLInputElement;
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+    } else {
+      passwordInput.type = 'password';
+    }
   }
 }
