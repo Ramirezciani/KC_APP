@@ -40,13 +40,9 @@ login() {
   this.http.post('https://tmp.enred.cl/kc/rest/login.php', data).subscribe(
     (response: any) => {
       // El inicio de sesión fue exitoso
-      this.presentAlert('Éxito', 'Inicio de sesión exitoso', '¡Has iniciado sesión correctamente!');
-      successFlag = true; // Actualizar la bandera de éxito
-      setTimeout(() => {
-        if (successFlag) {
           this.router.navigate(['/principal']);
-        }
-      }, 1000); // Tiempo de espera en milisegundos (ejemplo: 3000 para 3 segundos)
+          console.log('Inicio de sesion exitoso')
+         // Tiempo de espera en milisegundos (ejemplo: 3000 para 3 segundos)
     },
     (error) => {
       // Hubo un error en el inicio de sesión
