@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-mensaje-recibido',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mensaje-recibido.page.scss'],
 })
 export class MensajeRecibidoPage implements OnInit {
-
-  constructor() { }
-
+  
+ 
   ngOnInit() {
+    
   }
 
 }
+
+

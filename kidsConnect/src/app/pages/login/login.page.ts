@@ -23,32 +23,38 @@ export class LoginPage {
   
   }
 
-  login() {
-    if (!this.rut || !this.password) {
-      // Verificar si los campos de rut y contraseña están vacíos
-      this.presentAlert('Alerta', 'Campos vacíos', 'Por favor ingrese su rut y contraseña.');
-      return;
-    }
-  
-    const data = {
-      rut: this.rut,
-      password: this.password,
-    };
-  
-    let successFlag = false; // Bandera de control para saber si se muestra el mensaje de éxito
-  
-    this.http.post('https://tmp.enred.cl/kc/rest/login.php', data).subscribe(
-      (response: any) => {
-        // El inicio de sesión fue exitoso
-        this.presentAlert('Éxito', 'Inicio de sesión exitoso', '¡Has iniciado sesión correctamente!');
-      },
-      (error) => {
-        // Hubo un error en el inicio de sesión
-        console.error('Error en el inicio de sesión', error);
-        this.presentAlert('Error', 'Inicio de sesión fallido', 'Por favor verifique su rut y contraseña.');
-      }
-    );
+login() {
+  if (!this.rut || !this.password) {
+    // Verificar si los campos de rut y contraseña están vacíos
+    this.presentAlert('Alerta', 'Campos vacíos', 'Por favor ingrese su rut y contraseña.');
+    return;
   }
+
+  const data = {
+    rut: this.rut,
+    password: this.password,
+  };
+
+  let successFlag = false; // Bandera de control para saber si se muestra el mensaje de éxito
+
+  this.http.post('https://tmp.enred.cl/kc/rest/login.php', data).subscribe(
+    (response: any) => {
+      // El inicio de sesión fue exitoso
+      this.presentAlert('Éxito', 'Inicio de sesión exitoso', '¡Has iniciado sesión correctamente!');
+      successFlag = true; // Actualizar la bandera de éxito
+      setTimeout(() => {
+        if (successFlag) {
+          this.router.navigate(['/principal']);
+        }
+      }, 1000); // Tiempo de espera en milisegundos (ejemplo: 3000 para 3 segundos)
+    },
+    (error) => {
+      // Hubo un error en el inicio de sesión
+      console.error('Error en el inicio de sesión', error);
+      this.presentAlert('Error', 'Inicio de sesión fallido', 'Por favor verifique su rut y contraseña.');
+    }
+  );
+}
 
 
 presentAlert(header: string, subHeader: string, message: string) {

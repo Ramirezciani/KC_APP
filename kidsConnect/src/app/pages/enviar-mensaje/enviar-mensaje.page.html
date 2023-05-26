@@ -1,18 +1,32 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class="toolbar">
-    <ion-buttons (click)="onClick()">
-      <ion-button >
-        <ion-icon slot="start" name="menu"></ion-icon>
-      </ion-button>
-      <ion-title> Enviar Mensaje</ion-title>
-    </ion-buttons>
+  <ion-toolbar>
+    <ion-title>mensaje_recibido</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Enviar Mensajes</ion-title>
+      <ion-title size="large">mensaje_recibido</ion-title>
     </ion-toolbar>
   </ion-header>
+  
+
+    <ion-item class="menucolor">
+      <ion-label position="floating">Mensaje</ion-label>
+      <ion-textarea [(ngModel)]="mensaje" rows="5"></ion-textarea>
+    </ion-item>
+  
+    <ion-item class="menucolor">
+      <ion-label position="floating">Código del Curso</ion-label>
+      <ion-input type="number" [(ngModel)]="codCurso"></ion-input>
+    </ion-item>
+  
+    <ion-item class="menucolor">
+      <ion-label position="floating">RUT del Profesor</ion-label>
+      <ion-input [(ngModel)]="rutProfesor"></ion-input>
+    </ion-item>
+  
+    <ion-button expand="full" (click)="enviarMensaje()">Enviar</ion-button>
+
 </ion-content>
