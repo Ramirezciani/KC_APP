@@ -1,49 +1,29 @@
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
+import { MensajeService } from 'src/app/services/mensajes.service';
 
 @Component({
   selector: 'app-enviar-mensaje',
-  templateUrl: './enviar-mensaje.page.html',
-  styleUrls: ['./enviar-mensaje.page.scss'],
+  templateUrl: 'enviar-mensaje.page.html',
+  styleUrls: ['enviar-mensaje.page.scss']
 })
-export class EnviarMensajePage implements OnInit {
+export class EnviarMensajePage {
+  mensaje: any = {};
 
-  constructor(private router:Router,
-              private menuCtrl:MenuController,
-              private http: HttpClient) { }
-
-  ngOnInit() {
-  }
-  onClick() {
-    this.menuCtrl.toggle();
-  }
-  mensaje = [];
-  codCurso = [];
-  rutProfesor = [];
-  
-
-  
+  constructor(private http: HttpClient, private mensajeService:MensajeService) {}
 
   enviarMensaje() {
-    const mensajeData = {
-      mensaje: this.mensaje,
-      codCurso: this.codCurso,
-      rutProfesor: this.rutProfesor
-    };
-
-    this.http.post('http://tmp.enred.cl/kc/rest/buzon.php', mensajeData)
+    this.mensajeService.enviarMensaje(this.mensaje)
       .subscribe(
-        response => {
+        () => {
+          // Éxito: mostrar mensaje de éxito o realizar otras acciones necesarias
           console.log('Mensaje enviado correctamente');
-          // Realizar acciones adicionales si es necesario
         },
-        error => {
+        (error: any) => {
+          // Error: mostrar mensaje de error o manejar el error según sea necesario
           console.error('Error al enviar el mensaje', error);
-          // Realizar acciones adicionales si es necesario
         }
       );
   }
-
 }
+
