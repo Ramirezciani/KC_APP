@@ -6,27 +6,19 @@
 
 <ion-content>
   <ion-list>
-
     <ion-item>
-      <ion-label position="floating">Rut Emisor</ion-label>
-      <ion-input [(ngModel)]="mensaje.rut_receptor" name="rut_emisor" type="text"></ion-input>
+      <ion-label position="floating">Rut del Participante</ion-label>
+      <ion-input [(ngModel)]="rutParticipante" name="rutParticipante" required></ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-label position="floating">Nombre Emisor</ion-label>
-      <ion-input [(ngModel)]="mensaje.nom_receptor" name="nom_receptor" type="text"></ion-input>
+      <ion-label position="floating">Nombre del Participante</ion-label>
+      <ion-input [(ngModel)]="nombreParticipante" name="nombreParticipante" required></ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-label position="floating">Nombre Emisor</ion-label>
-      <ion-input [(ngModel)]="mensaje.cont_mensaje" name="nom_emcont_mensajeisor" type="text"></ion-input>
+      <ion-label position="floating">Contenido del Mensaje</ion-label>
+      <ion-textarea [(ngModel)]="contMensaje" name="contMensaje" required></ion-textarea>
     </ion-item>
-
-
-    <!-- Agregar más campos según tus necesidades -->
-
-    <ion-button expand="full" (click)="enviarMensaje()">Enviar Mensaje</ion-button>
   </ion-list>
+
+  <ion-button expand="full" color="primary" (click)="enviarMensaje()">Enviar Mensaje</ion-button>
 </ion-content>
-
-
