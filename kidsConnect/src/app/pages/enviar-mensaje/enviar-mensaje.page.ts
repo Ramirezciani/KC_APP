@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient , HttpHeaders} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { MensajeService } from 'src/app/services/mensajes.service';
 
 @Component({
@@ -8,33 +8,35 @@ import { MensajeService } from 'src/app/services/mensajes.service';
   styleUrls: ['enviar-mensaje.page.scss']
 })
 export class EnviarMensajePage {
-  rutParticipante = [];
-  nombreParticipante = [];
-  contMensaje = [];
-
-  constructor(private http: HttpClient, private mensajeService:MensajeService) {}
- 
   apiUrl = 'http://tmp.enred.cl/kc/rest/mensaje.php'; // Reemplaza con la URL de tu API
 
-  enviarMensaje() {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  
-    const data = {
-      rutParticipante: this.rutParticipante,
-      nombreParticipante: this.nombreParticipante,
-      contMensaje: this.contMensaje
-    };
-  
-    this.http.post(this.apiUrl, data, { headers })
-      .subscribe(
-        response => {
-          console.log('Mensaje enviado:', response);
-        },
-        error => {
-          console.log('Error al enviar el mensaje:', error);
+  rutDocente: string = '';
+  mensaje: string = '';
+  docente: any;
+
+  constructor(private http: HttpClient, private mensajeService: MensajeService) { }
+
+  buscarDocente(rut: string) {
+    this.mensajeService.buscarPorDocentes(rut).subscribe(
+      (response) => {
+        if (response.success && response.data) {
+          this.docente = response.data;
+          console.log('Docente encontrado:', this.docente);
+        } else {
+          console.log('No se encontró un docente con el rut especificado');
         }
-      );
+      },
+      (error) => {
+        console.log('Error al buscar el docente:', error);
+      }
+    );
+  
+  }
+
+  enviarMensaje() {
+    // Aquí puedes utilizar los datos del docente (this.docente) para enviar el mensaje
+    console.log('Docente encontrado:', this.docente);
+    console.log('Mensaje:', this.mensaje);
+    // Resto de la lógica para enviar el mensaje...
   }
 }
-  
-

@@ -35,13 +35,13 @@ login() {
     password: this.password,
   };
 
-  let successFlag = false; // Bandera de control para saber si se muestra el mensaje de éxito
 
   this.http.post('https://tmp.enred.cl/kc/rest/login.php', data).subscribe(
     (response: any) => {
       // El inicio de sesión fue exitoso
           this.router.navigate(['/principal']);
           console.log('Inicio de sesion exitoso')
+          localStorage.setItem('rutUsuario', this.rut);
          // Tiempo de espera en milisegundos (ejemplo: 3000 para 3 segundos)
     },
     (error) => {
