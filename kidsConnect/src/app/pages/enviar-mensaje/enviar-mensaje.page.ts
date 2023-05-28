@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { MensajeService } from 'src/app/services/mensajes.service';
 
 @Component({
@@ -8,34 +7,32 @@ import { MensajeService } from 'src/app/services/mensajes.service';
   styleUrls: ['enviar-mensaje.page.scss']
 })
 export class EnviarMensajePage {
-  apiUrl = 'http://tmp.enred.cl/kc/rest/mensaje.php'; // Reemplaza con la URL de tu API
-
   rutDocente: string = '';
   mensaje: string = '';
-  docente: any;
+  docentes: any[] = [];
+  nombre: string = 'Javiera';
 
-  constructor(private http: HttpClient, private mensajeService: MensajeService) { }
+  constructor(private mensajeService: MensajeService) {}
 
-  buscarDocente(rut: string) {
-    this.mensajeService.buscarPorDocentes(rut).subscribe(
-      (response) => {
-        if (response.success && response.data) {
-          this.docente = response.data;
-          console.log('Docente encontrado:', this.docente);
-        } else {
-          console.log('No se encontró un docente con el rut especificado');
-        }
-      },
-      (error) => {
-        console.log('Error al buscar el docente:', error);
+  async buscarDocentes() {
+    try {
+      const response: any = await this.mensajeService.buscarPorNombre(this.nombre).toPromise();
+      console.log(response); // Imprimir la respuesta en la consola
+
+      if (response && response.success) {
+        this.docentes = response.data;
+        console.log('Docentes encontrados:', this.docentes);
+      } else {
+        console.log('No se encontraron docentes con el nombre especificado');
       }
-    );
-  
+    } catch (error) {
+      console.log('Error al buscar los docentes:', error);
+    }
   }
 
   enviarMensaje() {
-    // Aquí puedes utilizar los datos del docente (this.docente) para enviar el mensaje
-    console.log('Docente encontrado:', this.docente);
+    // Aquí puedes utilizar los datos del docente seleccionado para enviar el mensaje
+    console.log('Docente seleccionado:', this.rutDocente);
     console.log('Mensaje:', this.mensaje);
     // Resto de la lógica para enviar el mensaje...
   }

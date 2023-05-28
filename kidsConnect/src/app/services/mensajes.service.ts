@@ -1,20 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MensajeService {
-  private apiUrl = 'https://tmp.enred.cl/rest/mensajes.php'; // Reemplaza la URL con la ubicación de tu script PHP
+  private apiUrl = 'http://tmp.enred.cl/kc/rest/mensajes.php';
 
   constructor(private http: HttpClient) {}
 
-  buscarPorDocentes(rut: string): Observable<any> {
-    const encodedRut = encodeURIComponent(rut);
-    const url = `${this.apiUrl}?nombreFuncion=buscarDocentePorRut&rut_participante=${encodedRut}`;
+  buscarPorNombre(nombre: string): Observable<any> {
+    const encodedNombre = encodeURIComponent(nombre);
+    const url = `${this.apiUrl}?nombreFuncion=obtenerDocentes&nombre=${encodedNombre}`;
     return this.http.get(url);
   }
+  
 
+  enviarMensaje(rutReceptor: string, nomReceptor: string, contMensaje: string): Observable<any> {
+    const url = `${this.apiUrl}`;
+    const data = {
+      rut_participante: rutReceptor,
+      nombreParticipante: nomReceptor,
+      contMensaje: contMensaje
+    };
+    return this.http.post(url, data);
+  }
 }

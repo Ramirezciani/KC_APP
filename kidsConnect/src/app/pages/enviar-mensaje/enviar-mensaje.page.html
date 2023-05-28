@@ -1,27 +1,28 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Enviar Mensaje
-    </ion-title>
+    <ion-title>Enviar Mensaje</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-item>
-    <ion-label position="floating">Rut del Docente</ion-label>
-    <ion-input [(ngModel)]="rutDocente" type="text"></ion-input>
+    <ion-label position="floating">Nombre del Docente</ion-label>
+    <ion-input type="text" [(ngModel)]="nombre"></ion-input>
   </ion-item>
-  <ion-button expand="full" (click)="buscarDocente(rutDocente)">Buscar Docente</ion-button>
-  
-  <ion-item *ngIf="docente">
-    <ion-label>Rut: {{ docente.rut_participante }}</ion-label>
-    <ion-label>Nombre: {{ docente.nombre_participante }}</ion-label>
-    <ion-label>Apellido: {{ docente.apellido_participante }}</ion-label>
-  </ion-item>
-  
+
+  <ion-button expand="full" (click)="buscarDocentes()">Buscar Docentes</ion-button>
+
+  <ion-list *ngIf="docentes.length > 0">
+    <ion-item *ngFor="let docente of docentes">
+      <ion-label>{{ docente.nombre_participante }} {{ docente.apellido_participante }}</ion-label>
+      <ion-radio slot="start" [value]="docente.rut_participante" [(ngModel)]="rutDocente"></ion-radio>
+    </ion-item>
+  </ion-list>
+
   <ion-item>
     <ion-label position="floating">Mensaje</ion-label>
     <ion-textarea [(ngModel)]="mensaje"></ion-textarea>
   </ion-item>
-  <ion-button expand="full" (click)="enviarMensaje()">Enviar Mensaje</ion-button>
+
+  <ion-button expand="full" (click)="enviarMensaje()" [disabled]="rutDocente === '' || mensaje === ''">Enviar Mensaje</ion-button>
 </ion-content>
