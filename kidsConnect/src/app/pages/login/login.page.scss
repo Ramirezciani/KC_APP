@@ -8,7 +8,7 @@
 }
 
 img{
-    height: 150px;
+    height: 300px;
     width: auto;
     display: block;
     margin: auto;
@@ -18,14 +18,15 @@ ion-button{
     border: solid  1px;
     margin: 20px;
     border-radius: 8px;
+    color: white;
 }
 
 
 a{
     display: block;
     text-align: center;
-    color: white;
-    text-shadow: 1px 1px 2px  #000602 ;
+    color: black;
+    text-shadow: 1px 1px 2px  #ffff ;
     font-weight: bold;
     text-decoration: none;
 
