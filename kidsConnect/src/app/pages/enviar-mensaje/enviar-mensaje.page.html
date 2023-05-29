@@ -13,18 +13,26 @@
   <ion-button expand="full" (click)="buscarDocentes()">Buscar Docentes</ion-button>
 
   <ion-list *ngIf="docentes.length > 0">
-    <ion-item *ngFor="let docente of docentes" class="menucolor">
-      <ion-label>{{ docente.nombre_completo }} </ion-label>
-      <ion-label> Rut: {{ docente.rut_participante }} </ion-label>
-      <ion-label> Curso: {{ docente.cod_curso }} </ion-label>
-      <ion-radio slot="start" [value]="docente.rut_participante" [(ngModel)]="rutDocente"></ion-radio>
-    </ion-item>
+    <ion-radio-group [(ngModel)]="docenteSeleccionado">
+      <ion-item *ngFor="let docente of docentes" class="menucolor">
+        <ion-label>{{ docente.nombre_completo }}</ion-label>
+        <ion-label>Rut: {{ docente.rut_participante }}</ion-label>
+        <ion-label>Curso: {{ docente.cod_curso }}</ion-label>
+        <ion-radio slot="start" [value]="docente"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
   </ion-list>
 
- 
+
   <ion-item class="menucolor">
     <ion-label position="floating">Mensaje</ion-label>
     <ion-textarea rows="5" [(ngModel)]="mensaje"></ion-textarea>
+  </ion-item>
+
+  <ion-item class="menucolor">
+    <ion-label position="floating">Nombre del Emisor</ion-label>
+    <ion-input type="text" [(ngModel)]="nombreEmisor" name="nombreEmisor"></ion-input>
+
   </ion-item>
 
   <ion-button expand="full" (click)="enviarMensaje()">Enviar Mensaje</ion-button>

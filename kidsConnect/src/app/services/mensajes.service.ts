@@ -23,6 +23,7 @@ export class MensajeService {
     );
   }
   
+  
 
   enviarMensaje(rutReceptor: string, nomReceptor: string, contMensaje: string): Observable<any> {
     const url = `${this.apiUrl}`;
