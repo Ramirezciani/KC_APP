@@ -1,19 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MensajeService {
-  private apiUrl = 'http://tmp.enred.cl/kc/rest/mensajes.php';
+  private apiUrl = 'http://tmp.enred.cl/kc/rest/mensajes-movil.php';
 
   constructor(private http: HttpClient) {}
 
-  buscarPorNombre(nombre: string): Observable<any> {
+  obtenerDocentes(nombre: string): Observable<any> {
     const encodedNombre = encodeURIComponent(nombre);
-    const url = `${this.apiUrl}?nombreFuncion=obtenerDocentes&nombre=${encodedNombre}`;
-    return this.http.get(url);
+    const url = `${this.apiUrl}?nombreFuncion=buscarDocentesPorNombre&nombre=${encodedNombre}`;
+    return this.http.get(url).pipe(
+      catchError((error) => {
+        console.log('Error al buscar los docentes:', error);
+        return of(null); // Devolver un observable de valor nulo en caso de error
+      })
+    );
   }
   
 
