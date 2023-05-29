@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Buscar Docentes</ion-title>
+    <ion-title>Enviar Mensaje</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,10 +12,20 @@
 
   <ion-button expand="full" (click)="buscarDocentes()">Buscar Docentes</ion-button>
 
-  <ion-list *ngIf="docentes && docentes.length > 0">
+  <ion-list *ngIf="docentes.length > 0">
     <ion-item *ngFor="let docente of docentes" class="menucolor">
-      <ion-label>{{ docente.nombre_completo }}</ion-label>
+      <ion-label>{{ docente.nombre_completo }} </ion-label>
+      <ion-label> Rut: {{ docente.rut_participante }} </ion-label>
+      <ion-label> Curso: {{ docente.cod_curso }} </ion-label>
       <ion-radio slot="start" [value]="docente.rut_participante" [(ngModel)]="rutDocente"></ion-radio>
     </ion-item>
   </ion-list>
+
+ 
+  <ion-item class="menucolor">
+    <ion-label position="floating">Mensaje</ion-label>
+    <ion-textarea rows="5" [(ngModel)]="mensaje"></ion-textarea>
+  </ion-item>
+
+  <ion-button expand="full" (click)="enviarMensaje()">Enviar Mensaje</ion-button>
 </ion-content>

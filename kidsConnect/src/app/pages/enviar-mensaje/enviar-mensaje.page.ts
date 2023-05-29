@@ -7,10 +7,12 @@ import { MensajeService } from 'src/app/services/mensajes.service';
   styleUrls: ['enviar-mensaje.page.scss']
 })
 export class EnviarMensajePage {
-  rutDocente: string = '';
-  mensaje: string = '';
-  docentes: any[] = [];
   nombre: string = '';
+  docentes: any[] = [];
+  rutDocente: string = '';
+  nombreDocente: string = '';
+  mensaje: string = '';
+
 
   constructor(private mensajeService: MensajeService) {}
 
@@ -18,24 +20,27 @@ export class EnviarMensajePage {
     try {
       const response: any = await this.mensajeService.obtenerDocentes(this.nombre).toPromise();
       console.log(response); // Imprimir la respuesta en la consola
-  
+
       if (response && response.success) {
         this.docentes = response.data;
         console.log('Docentes encontrados:', this.docentes);
       } else {
-        this.docentes = []; // Reiniciar el array de docentes si no se encontraron resultados
         console.log('No se encontraron docentes con el nombre especificado');
       }
     } catch (error) {
-      this.docentes = []; // Reiniciar el array de docentes en caso de error
       console.log('Error al buscar los docentes:', error);
     }
   }
 
   enviarMensaje() {
-    // Aquí puedes utilizar los datos del docente seleccionado para enviar el mensaje
-    console.log('Docente seleccionado:', this.rutDocente);
-    console.log('Mensaje:', this.mensaje);
-    // Resto de la lógica para enviar el mensaje...
+    if (this.rutDocente && this.nombreDocente) {
+      // Aquí puedes utilizar los datos del docente seleccionado para enviar el mensaje
+      console.log('Docente seleccionado:', this.rutDocente);
+      console.log('Nombre del docente seleccionado:', this.nombreDocente);
+      console.log('Mensaje:', this.mensaje);
+      // Resto de la lógica para enviar el mensaje...
+    } else {
+      console.log('No se ha seleccionado ningún docente');
+    }
   }
 }
