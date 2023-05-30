@@ -8,7 +8,7 @@ import { of } from 'rxjs';
   providedIn: 'root',
 })
 export class MensajeService {
-  private apiUrl = 'http://tmp.enred.cl/kc/rest/mensajes-movil.php';
+  private apiUrl = 'http://tmp.enred.cl/kc/rest/get_docente_nombre.php';
 
   constructor(private http: HttpClient) {}
 
@@ -23,14 +23,19 @@ export class MensajeService {
     );
   }
   
-  
+  private api = 'http://tmp.enred.cl/kc/rest/buzon.php';
 
-  enviarMensaje(rutReceptor: string, nomReceptor: string, contMensaje: string): Observable<any> {
-    const url = `${this.apiUrl}`;
+  
+  enviarMensaje(rutEmisor: string, nomEmisor: string, rutReceptor: string, nomReceptor: string, contMensaje: string, imgMensaje: string, tipoMensaje: string): Observable<any> {
+    const url = `${this.api}`;
     const data = {
-      rut_participante: rutReceptor,
-      nombreParticipante: nomReceptor,
-      contMensaje: contMensaje
+      rut_emisor: rutEmisor,
+      nom_emisor: nomEmisor,
+      rut_receptor: rutReceptor,
+      nom_receptor: nomReceptor,
+      cont_mensaje: contMensaje,
+      img_mensaje: imgMensaje,
+      tipo_mensaje: tipoMensaje
     };
     return this.http.post(url, data);
   }

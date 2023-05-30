@@ -15,10 +15,10 @@ export class EnviarMensajePage {
   mensaje: string = '';
   nombreEmisor: string = '';
   tipoMensaje: string = '';
-  rutEmisor: any ;
+  rutEmisor: number;
 
   constructor(private mensajeService: MensajeService, private http: HttpClient) {
-    this.rutEmisor = localStorage.getItem('rutUsuario');
+    this.rutEmisor = parseInt(localStorage.getItem('rutUsuario') || '0');
   }
 
   async buscarDocentes() {
@@ -37,7 +37,7 @@ export class EnviarMensajePage {
     }
   }
 
-  enviarMensaje() {
+  async enviarMensaje() {
     if (this.docenteSeleccionado) {
       console.log('Docente seleccionado:', this.docenteSeleccionado.rut_participante);
       console.log('Nombre del docente seleccionado:', this.docenteSeleccionado.nombre_completo);
@@ -69,34 +69,28 @@ export class EnviarMensajePage {
       // Crea el objeto de datos para la solicitud POST
       const data = {
         rut_emisor: rutEmisor,
-        nom_emisor: nomEmisor,
+        nombre_emisor: nomEmisor,
         rut_receptor: rutReceptor,
-        nom_receptor: nomReceptor,
+        nombre_receptor: nomReceptor,
         cont_mensaje: contMensaje,
-        img_mensaje: '',
+        img_mensaje: '', // Debes proporcionar el valor adecuado si se incluye la opción de enviar imagen
         tipo_mensaje: tipoMensajeApiValue
       };
 
-      // Realiza la solicitud POST a través de la API
-      this.http.post<any>('http://tmp.enred.cl/kc/rest/mensajes-movil.php', data).subscribe(
-  (response: any) => {
-    if (response && response.body && response.body.mensaje) {
-      console.log('Mensaje enviado:', response.body.mensaje);
-      // Resto de la lógica después de enviar el mensaje...
-    } else {
-      console.log('Respuesta desconocida');
-    }
-  },
-  (error: HttpErrorResponse) => {
-    if (error && error.error) {
-      console.log('Error al enviar el mensaje:', error.error);
-    } else {
-      console.log('Error desconocido');
-    }
-  }
-);
+
+      this.http.post('http://tmp.enred.cl/kc/rest/buzon.php', data, { responseType: 'text' }).subscribe(
+        (response: any) => {
+          console.log('Mensaje enviado:', response);
+          // Resto de la lógica después de enviar el mensaje...
+        },
+        (error: HttpErrorResponse) => {
+          if (error && error.error) {
+            console.log('Error al enviar el mensaje:', error.error);
+          } else {
+            console.log('Error desconocido');
+          }
+        }
+      );
     }
   }
-  
-  
-}  
+}
