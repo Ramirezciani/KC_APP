@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>Enviar Mensaje</ion-title>
   </ion-toolbar>
@@ -39,6 +39,55 @@
       <ion-select-option value="Texto">Texto</ion-select-option>
       <ion-select-option value="Imagen">Imagen</ion-select-option>
       <ion-select-option value="Archivo">Archivo</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="full" (click)="enviarMensaje()">Enviar Mensaje</ion-button>
+</ion-content> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Enviar Mensaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item class="menucolor">
+    <ion-label position="floating">Nombre del Docente</ion-label>
+    <ion-input type="text" [(ngModel)]="nombre"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="buscarDocentes()">Buscar Docentes</ion-button>
+
+  <ion-list *ngIf="docentes.length > 0">
+    <ion-radio-group [(ngModel)]="docenteSeleccionado">
+      <ion-item *ngFor="let docente of docentes" class="menucolor">
+        <ion-label>{{ docente.nombre_completo }}</ion-label>
+        <ion-label>Rut: {{ docente.rut_participante }}</ion-label>
+        <ion-label>Curso: {{ docente.cod_curso }}</ion-label>
+        <ion-radio slot="start" [value]="docente"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-item class="menucolor">
+    <ion-label position="floating">Mensaje</ion-label>
+    <ion-textarea rows="5" [(ngModel)]="mensaje"></ion-textarea>
+  </ion-item>
+
+  <ion-item class="menucolor">
+    <ion-label position="floating">Nombre del Emisor</ion-label>
+    <ion-input type="text" [(ngModel)]="nombreEmisor" name="nombreEmisor"></ion-input>
+  </ion-item>
+
+
+
+  <ion-item class="menucolor">
+    <ion-label>Tipo de Mensaje</ion-label>
+    <ion-select [(ngModel)]="tipoMensaje">
+      <ion-select-option value="Justificativo">Justificativo</ion-select-option>
+      <ion-select-option value="Comunicacion">Comunicacion</ion-select-option>
+      <ion-select-option value="Comprobante">Comprobante</ion-select-option>
     </ion-select>
   </ion-item>
 

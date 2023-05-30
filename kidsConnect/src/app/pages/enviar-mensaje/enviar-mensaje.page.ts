@@ -16,6 +16,7 @@ export class EnviarMensajePage {
   nombreEmisor: string = '';
   tipoMensaje: string = '';
   rutEmisor: number;
+  
 
   constructor(private mensajeService: MensajeService, private http: HttpClient) {
     this.rutEmisor = parseInt(localStorage.getItem('rutUsuario') || '0');
@@ -53,18 +54,35 @@ export class EnviarMensajePage {
       const nomEmisor = this.nombreEmisor;
 
       // Map the selected type to the API type value
-      let tipoMensajeApiValue = '';
-      switch (this.tipoMensaje) {
-        case 'Justificativo':
-          tipoMensajeApiValue = 'J';
-          break;
-        case 'Comunicacion':
-          tipoMensajeApiValue = 'C';
-          break;
-        case 'Comprobante':
-          tipoMensajeApiValue = 'P';
-          break;
-      }
+      // let tipoMensajeApiValue = '';
+      // switch (this.tipoMensaje) {
+      //   case 'Justificativo':
+      //     tipoMensajeApiValue = 'J';
+      //     break;
+      //   case 'Comunicacion':
+      //     tipoMensajeApiValue = 'C';
+      //     break;
+      //   case 'Comprobante':
+      //     tipoMensajeApiValue = 'P';
+      //     break;
+      // }
+              let tipoMensajeApiValue = '';
+        switch (this.tipoMensaje) {
+          case 'Justificativo':
+            tipoMensajeApiValue = 'Justificativo';
+            break;
+          case 'Comunicacion':
+            tipoMensajeApiValue = 'Comunicacion';
+            break;
+          case 'Comprobante':
+            tipoMensajeApiValue = 'Comprobante';
+            break;
+          default:
+            // Si ninguna de las opciones coincide, puedes manejarlo como desees.
+            // En este ejemplo, se asigna un valor por defecto.
+            tipoMensajeApiValue = '';
+            break;
+        }
 
       // Crea el objeto de datos para la solicitud POST
       const data = {
