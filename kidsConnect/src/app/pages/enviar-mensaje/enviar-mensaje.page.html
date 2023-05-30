@@ -23,7 +23,6 @@
     </ion-radio-group>
   </ion-list>
 
-
   <ion-item class="menucolor">
     <ion-label position="floating">Mensaje</ion-label>
     <ion-textarea rows="5" [(ngModel)]="mensaje"></ion-textarea>
@@ -32,7 +31,15 @@
   <ion-item class="menucolor">
     <ion-label position="floating">Nombre del Emisor</ion-label>
     <ion-input type="text" [(ngModel)]="nombreEmisor" name="nombreEmisor"></ion-input>
+  </ion-item>
 
+  <ion-item class="menucolor">
+    <ion-label>Tipo de Mensaje</ion-label>
+    <ion-select [(ngModel)]="tipoMensaje">
+      <ion-select-option value="Texto">Texto</ion-select-option>
+      <ion-select-option value="Imagen">Imagen</ion-select-option>
+      <ion-select-option value="Archivo">Archivo</ion-select-option>
+    </ion-select>
   </ion-item>
 
   <ion-button expand="full" (click)="enviarMensaje()">Enviar Mensaje</ion-button>
