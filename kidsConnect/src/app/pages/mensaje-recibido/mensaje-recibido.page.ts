@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
+import { MensajeService } from 'src/app/services/mensajes.service';
 
 
 @Component({
@@ -8,10 +11,44 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mensaje-recibido.page.scss'],
 })
 export class MensajeRecibidoPage implements OnInit {
+  mensajes : any[] = [];
+
+  constructor(private router: Router, private mensajeService: MensajeService,
+              private menuCtrl:MenuController) {}
+
   
- 
-  ngOnInit() {
-    
+ngOnInit() {
+  const rutUsuario = localStorage.getItem('rutUsuario'); // Ajusta la clave utilizada para almacenar el rut en el LocalStorage
+
+  if (rutUsuario !== null) {
+    this.mensajeService.getMensajesByRut(rutUsuario).subscribe(
+      (response: Object) => {
+        this.mensajes = response as any[];
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  } else {
+    console.log('El valor de rutUsuario es null');
+  }
+}
+
+  bandeja_entrada() {
+    this.router.navigate(['/mensaje-recibido']);
+  }
+
+  ir_home() {
+    this.router.navigate(['/principal']);
+  }
+
+  onClick(){
+    this.menuCtrl.toggle();
+
+  }
+
+  ir_send(){
+    this.router.navigate(['/enviar-mensaje'])
   }
 
 }
