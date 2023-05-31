@@ -16,21 +16,28 @@
       <ion-card-subtitle>Bandeja de Entrada</ion-card-subtitle>
     </ion-card-header>
   </ion-card>
-  <ion-list class="boton_aceptar">
-    <ion-card  *ngFor="let mensaje of mensajes" class="ficha">
-      <ion-card-header>
-        <ion-card-subtitle>Fecha</ion-card-subtitle>
-        <ion-card-subtitle>{{ mensaje.fch_crea }}</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-label>Enviado por: </ion-label><br>
-        <ion-text>{{ mensaje.usuario_rut_us }}</ion-text><br>
-        <ion-text>{{ mensaje.cont_msj }}</ion-text>
-      </ion-card-content>
-      <ion-label>Imagen</ion-label>
-      <ion-text>{{ mensaje.img_msj }}</ion-text>
-    </ion-card>
-  </ion-list>
+
+  <ion-card *ngFor="let mensaje of mensajes" class="menucolor">
+    <ion-card-header>
+      <ion-label>Enviado el :</ion-label>
+      {{ mensaje.fecha_envio }}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item class="inputs">
+        <ion-label>Enviado por:</ion-label>
+        <ion-label>{{mensaje.nom_emisor}}</ion-label>
+      </ion-item>
+      <ion-item class="inputs">
+        <ion-label>Contenido Mensaje</ion-label>
+        <ion-label>{{ mensaje.cont_mensaje }}</ion-label>
+      </ion-item>
+      <ion-item class="inputs">
+        <ion-label>Contenido Mensaje</ion-label>
+        <ion-label>{{ mensaje.tipo_mensaje }}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+ 
 
   <ion-card class="menucolor">
     <ion-card-header>
