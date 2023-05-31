@@ -21,7 +21,8 @@ export class RecuperarPassPage implements OnInit {
   confirmPass = '';
   showPassword: boolean = false;
   nombreUser = '';
-  emailAdmin: string = 'admin@example.com';
+  correoElectronico = '';
+  emailAdmin = 'pa.ramirezciani13@gmail.com';
 
   constructor(private menuCtrl: MenuController,
               private http: HttpClient,
@@ -109,12 +110,24 @@ export class RecuperarPassPage implements OnInit {
     }
   }
   
-  enviarCorreoRecuperacion(rutUser: string, nombreUser: string) {
+  enviarCorreoRecuperacion() {
     const subject = 'Solicitud de recuperación de contraseña';
-    const body = `Se ha recibido una solicitud de recuperación de contraseña para el usuario con RUT ${rutUser} y nombre ${nombreUser}.`;
+    const body = 'Se ha recibido una solicitud de recuperación de contraseña.';
 
-    window.location.href = `mailto:${this.emailAdmin}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const correoElectronico = this.correoElectronico; // Obtener el valor del campo de entrada de correo electrónico
+
+    // Validar si se ha ingresado un correo electrónico
+    if (!correoElectronico || correoElectronico.trim() === '') {
+      this.presentToast('Por favor ingresa tu dirección de correo electrónico', 'bottom');
+      return;
+    }
+
+    const mailTo = `mailto:${this.emailAdmin}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // Redirigir al cliente de correo con los datos del correo predefinidos
+    window.location.href = mailTo;
   }
+
 
   ir_login(){
     this.router.navigate(['/login'])

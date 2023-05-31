@@ -41,29 +41,25 @@
   
 
   <!-- Recuperar passs mediante correo -->
-  <ion-card color="medium">
+   <!-- Recuperar contraseña mediante correo -->
+   <ion-card color="medium">
     <ion-card-header>
       <ion-card-title>¿Olvidaste tu contraseña?</ion-card-title>
       <ion-card-subtitle>Recupera tu contraseña con nosotros</ion-card-subtitle>
     </ion-card-header>
-  
+
     <ion-card-content>
-      <form (ngSubmit)="enviarCorreoRecuperacion(rutUser, nombreUser)">
-        <!-- Rut user -->
+      <form (ngSubmit)="enviarCorreoRecuperacion()">
+        <!-- Correo electrónico -->
         <ion-item class="menucolor">
-          <ion-label position="floating">RUT:</ion-label>
-          <ion-input type="text" [(ngModel)]="rutUser" name="rutUser"></ion-input>
+          <ion-label position="floating">Correo electrónico:</ion-label>
+          <ion-input type="email" [(ngModel)]="correoElectronico" name="correoElectronico" placeholder="Escribe tu correo a donde llegara"></ion-input>
         </ion-item>
-  
-        <!-- Nombre user -->
-        <ion-item class="menucolor">
-          <ion-label position="floating">Nombre:</ion-label>
-          <ion-input type="text" [(ngModel)]="nombreUser" name="nombreUser"></ion-input>
-        </ion-item>
-  
+
+        <!-- Botón de envío -->
+        <ion-button type="submit" expand="block">Enviar</ion-button>
       </form>
     </ion-card-content>
-    <ion-button type="submit">Enviar</ion-button>
   </ion-card>
 
  
