@@ -31,10 +31,15 @@
     
 
 //Color de fondo
+// ion-content{
+//         --ion-background-color:#e3dacb
+//         ;
+//     }
+
+
 ion-content{
-        --ion-background-color:#e3dacb
-        ;
-    }
+    --background: url(assets/fondo-app.jpg) 0 0/100% 100% no-repeat;
+}
 
 //Color boton aceptar para todas las vistas
 .boton_aceptar{
