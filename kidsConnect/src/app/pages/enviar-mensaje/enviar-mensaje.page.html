@@ -57,19 +57,23 @@
 </ion-header>
 
 <ion-content>
-  <ion-item class="menucolor">
-    <ion-label position="floating">Nombre del Docente</ion-label>
-    <ion-input type="text" [(ngModel)]="nombre"></ion-input>
-  </ion-item>
-
-  <ion-button expand="full" (click)="buscarDocentes()">Buscar Docentes</ion-button>
-
+  <ion-card class="mensaje">
+    <h1>Ingresa el nombre del Docente</h1>
+    <ion-card-header>
+      <ion-item class="menucolor">
+        <ion-label position="floating">Nombre del Docente</ion-label>
+        <ion-input type="text" [(ngModel)]="nombre"></ion-input>
+      </ion-item>
+    </ion-card-header>
+    <ion-button class="boton_aceptar"expand="full" (click)="buscarDocentes()">Buscar Docentes</ion-button>
+  </ion-card>
+  <ion-card>
   <ion-list *ngIf="docentes.length > 0">
     <ion-radio-group [(ngModel)]="docenteSeleccionado">
       <ion-item *ngFor="let docente of docentes" class="menucolor">
         <ion-label>{{ docente.nombre_completo }}</ion-label>
         <ion-label>Rut: {{ docente.rut_participante }}</ion-label>
-        <ion-label>Curso: {{ docente.cod_curso }}</ion-label>
+        <ion-label>Curso: {{ docente.cod_cur }}</ion-label>
         <ion-radio slot="start" [value]="docente"></ion-radio>
       </ion-item>
     </ion-radio-group>
@@ -97,4 +101,5 @@
   </ion-item>
 
   <ion-button expand="full" (click)="enviarMensaje()">Enviar Mensaje</ion-button>
+</ion-card>
 </ion-content>
