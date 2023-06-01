@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-principal',
@@ -9,11 +11,31 @@ import { MenuController } from '@ionic/angular';
 })
 export class PrincipalPage implements OnInit {
 
-  constructor(private router:Router,
-              private menuCtrl: MenuController) { }
+  nombreUsuario: string = '';
 
-  ngOnInit() {
-  }
+  constructor(private router:Router,
+              private menuCtrl: MenuController,
+              private http:HttpClient,
+              ) { }
+
+              ngOnInit() {
+                const rutUsuario = localStorage.getItem('rutUsuario');
+                if (rutUsuario) {
+                  const endpointURL = `https://tmp.enred.cl/kc/rest/get_user_id.php?nombreFuncion=buscarUsuarioPorRut&rut_us=${rutUsuario}`;
+            
+                  this.http.get(endpointURL).subscribe(
+                    (response: any) => {
+                      if (response.success && response.data) {
+                        const usuario = response.data;
+                        this.nombreUsuario = `${usuario.nom_us} ${usuario.ap_pat_us} ${usuario.ap_mat_us}`;
+                      }
+                    },
+                    (error) => {
+                      console.error('Error al obtener el usuario:', error);
+                    }
+                  );
+                }
+              }
 
   ir_mensajes(){
     this.router.navigate(['/mensajes'])
