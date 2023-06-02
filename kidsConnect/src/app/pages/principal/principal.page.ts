@@ -28,6 +28,7 @@ export class PrincipalPage implements OnInit {
                       if (response.success && response.data) {
                         const usuario = response.data;
                         this.nombreUsuario = `${usuario.nom_us} ${usuario.ap_pat_us} ${usuario.ap_mat_us}`;
+                        localStorage.setItem('nombreUsuario', this.nombreUsuario);
                       }
                     },
                     (error) => {
