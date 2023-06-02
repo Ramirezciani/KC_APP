@@ -112,18 +112,20 @@ export class RecuperarPassPage implements OnInit {
   
   enviarCorreoRecuperacion() {
     const subject = 'Solicitud de recuperación de contraseña';
-    const body = 'Se ha recibido una solicitud de recuperación de contraseña.';
-
     const correoElectronico = this.correoElectronico; // Obtener el valor del campo de entrada de correo electrónico
-
+  
     // Validar si se ha ingresado un correo electrónico
     if (!correoElectronico || correoElectronico.trim() === '') {
       this.presentToast('Por favor ingresa tu dirección de correo electrónico', 'bottom');
       return;
     }
-
+  
+    const rutUsuario = localStorage.getItem('rutUsuario'); // Obtener el rut del usuario almacenado en localStorage
+  
+    const body = `Se ha recibido una solicitud de recuperación de contraseña.\nRut del usuario: ${rutUsuario}`;
+  
     const mailTo = `mailto:${this.emailAdmin}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
+  
     // Redirigir al cliente de correo con los datos del correo predefinidos
     window.location.href = mailTo;
   }
