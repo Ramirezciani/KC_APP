@@ -1,9 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { MensajeService } from 'src/app/services/mensajes.service';
-
 
 @Component({
   selector: 'app-mensaje-recibido',
@@ -11,28 +9,36 @@ import { MensajeService } from 'src/app/services/mensajes.service';
   styleUrls: ['./mensaje-recibido.page.scss'],
 })
 export class MensajeRecibidoPage implements OnInit {
-  mensajes : any[] = [];
+  mensajes: any[] = [];
+  rut: string = '';
 
-  constructor(private router: Router, private mensajeService: MensajeService,
-              private menuCtrl:MenuController) {}
+  constructor(
+    private mensajeService: MensajeService,
+    private router: Router,
+    private menuCtrl: MenuController
+  ) {}
 
-  
-ngOnInit() {
-  const rutUsuario = localStorage.getItem('rutUsuario'); // Ajusta la clave utilizada para almacenar el rut en el LocalStorage
+  ngOnInit() {
+    const rutUsuario = localStorage.getItem('rutUsuario');
+    this.rut = rutUsuario ? rutUsuario.toString() : '';
 
-  if (rutUsuario !== null) {
-    this.mensajeService.getMensajesByRut(rutUsuario).subscribe(
-      (response: Object) => {
-        this.mensajes = response as any[];
+    // Obtener los mensajes del usuario
+    this.obtenerMensajesPorRut(this.rut);
+  }
+
+  obtenerMensajesPorRut(rut: string) {
+    this.mensajeService.getMensajesByRut(rut).subscribe(
+      mensajes => {
+        // Manejar los mensajes obtenidos
+        this.mensajes = mensajes;
+        console.log(this.mensajes);
       },
-      (error) => {
-        console.log(error);
+      error => {
+        // Manejar el error
+        console.error(error);
       }
     );
-  } else {
-    console.log('El valor de rutUsuario es null');
   }
-}
 
   bandeja_entrada() {
     this.router.navigate(['/mensaje-recibido']);
@@ -42,14 +48,11 @@ ngOnInit() {
     this.router.navigate(['/principal']);
   }
 
-  onClick(){
+  onClick() {
     this.menuCtrl.toggle();
-
   }
 
-  ir_send(){
-    this.router.navigate(['/enviar-mensaje'])
+  ir_send() {
+    this.router.navigate(['/enviar-mensaje']);
   }
-
 }
-

@@ -43,13 +43,10 @@ export class MensajeService {
     return this.http.post(url, data);
   }
 
-  //Traer mensjaes by rut
   private URL = 'http://tmp.enred.cl/kc/rest/get_mensaje_by_rut.php';
 
- 
-
-  getMensajesByRut(rut: string) {
-    const url = `${this.URL}?rut=${rut}`;
-    return this.http.get(url);
+  getMensajesByRut(rut: string): Observable<any[]> {
+    const url = `${this.URL}?nombreFuncion=buscarMensajesPorRut&rut_receptor=${rut}`;
+    return this.http.get<any[]>(url);
   }
 }
