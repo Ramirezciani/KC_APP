@@ -120,7 +120,7 @@ export class RecuperarPassPage implements OnInit {
       return;
     }
   
-    const rutUsuario = localStorage.getItem('rutUsuario'); // Obtener el rut del usuario almacenado en localStorage
+    const rutUsuario = ' '; // Obtener el rut del usuario almacenado en localStorage
   
     const body = `Se ha recibido una solicitud de recuperación de contraseña.\nRut del usuario: ${rutUsuario}`;
   
