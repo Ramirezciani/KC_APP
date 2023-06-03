@@ -1,60 +1,71 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="toolbar">
     <ion-buttons (click)="onClick()">
-      <ion-button >
+      <ion-button>
         <ion-icon slot="start" name="menu"></ion-icon>
       </ion-button>
-      <ion-title> Ficha Alumno</ion-title>
+      <ion-title>Ficha Alumno</ion-title>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<!-- carta para realizar la busqueda -->
+  <!-- carta para realizar la búsqueda -->
   <ion-card class="menucolor">
     <ion-card-header>
       <ion-card-title>Busca la ficha por Rut Alumno</ion-card-title>
       <ion-card-subtitle>El rut debe ir sin puntos, sin guion y sin dv</ion-card-subtitle>
     </ion-card-header>
-      <ion-item class="inputs">
-        <ion-label  position="floating">RUT del Alumno</ion-label>
-        <ion-input [(ngModel)]="rutAlumno"></ion-input>
-      </ion-item>
-
-      <ion-button class="boton_aceptar" expand="full" (click)="buscarFicha()">Buscar</ion-button>
+    <ion-item class="inputs">
+      <ion-label position="floating">RUT del Alumno</ion-label>
+      <ion-input [(ngModel)]="rutAlumno"></ion-input>
+    </ion-item>
+    <ion-button class="boton_aceptar" expand="full" (click)="buscarFicha()">Buscar</ion-button>
     <ion-card-content>
-     
     </ion-card-content>
   </ion-card>
+
   <!-- MODAL PARA FICHA -->
-  <ion-content class="menucolor" class="ion-padding">
+  <ion-content class="mensaje" class="ion-padding">
     <ion-button id="open-modal" expand="block">Ver Ficha</ion-button>
     <ion-modal [keepContentsMounted]="true" trigger="open-modal" #modal>
       <ng-template>
         <ion-header>
           <ion-toolbar class="toolbar">
             <ion-buttons slot="start">
-              <ion-button class="menucolor"  (click)="modal.dismiss()">Cerrar</ion-button>
+              <ion-button class="menucolor" (click)="modal.dismiss()">Cerrar</ion-button>
             </ion-buttons>
             <ion-title>Ficha</ion-title>
           </ion-toolbar>
-
         </ion-header>
-        <ion-content class="ion-padding"> 
-           <h1>Nombre: {{fichas.nom_alu}} {{ fichas.ap_pat_alu }} {{ fichas.ap_mat_alu }} </h1>
-          <ion-card-subtitle>Rut Alumno: {{ fichas.alumno_rut_alu }}</ion-card-subtitle>
-          <h3>Fecha creacion: {{ fichas.fec_cre }}</h3>
-          <h3>Curso: {{fichas.nom_cur}}</h3>
-          <h1>Observaciones</h1>
-          {{ fichas.con_fc }}
+        <ion-content class="ion-padding">
+          <ion-list *ngIf="fichas">
+            <ion-item class="mensaje">
+              <ion-label>Nombre:</ion-label>
+              <ion-text>{{ fichas.nom_alu }} {{ fichas.ap_pat_alu }} {{ fichas.ap_mat_alu }}</ion-text>
+            </ion-item >
+            <ion-item class="mensaje">
+              <ion-label>Rut Alumno:</ion-label>
+              <ion-text>{{ fichas.alumno_rut_alu }}</ion-text>
+            </ion-item >
+            <ion-item class="mensaje">
+              <ion-label>Fecha creación:</ion-label>
+              <ion-text>{{ fichas.fec_cre }}</ion-text>
+            </ion-item>
+            <ion-item class="mensaje">
+              <ion-label>Curso:</ion-label>
+              <ion-text>{{ fichas.nom_cur }}</ion-text>
+            </ion-item>
+            <ion-item class="mensaje">
+              <ion-label>Observaciones: </ion-label>
+              <ion-text>{{ fichas.observaciones }}</ion-text>
+            </ion-item>
+          </ion-list>
+          <div *ngIf="!fichas">
+            <p>No se encontraron datos para el alumno ingresado.</p>
+          </div>
         </ion-content>
       </ng-template>
     </ion-modal>
   </ion-content>
 </ion-content>
-
-
-
-
-
-

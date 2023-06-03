@@ -18,20 +18,7 @@ export class MensajesPage implements OnInit {
 
   
               ngOnInit() {
-                const rutUsuario = localStorage.getItem('rutUsuario'); // Ajusta la clave utilizada para almacenar el rut en el LocalStorage
-              
-                if (rutUsuario !== null) {
-                  this.mensajeService.getMensajesByRut(rutUsuario).subscribe(
-                    (response: Object) => {
-                      this.mensajes = response as any[];
-                    },
-                    (error) => {
-                      console.log(error);
-                    }
-                  );
-                } else {
-                  console.log('El valor de rutUsuario es null');
-                }
+                
               }
 
   bandeja_entrada() {
