@@ -32,9 +32,7 @@
       <ng-template>
         <ion-header>
           <ion-toolbar class="toolbar">
-            <ion-buttons slot="start">
-              <ion-button class="menucolor" (click)="modal.dismiss()">Cerrar</ion-button>
-            </ion-buttons>
+
             <ion-title>Ficha</ion-title>
           </ion-toolbar>
         </ion-header>
@@ -61,6 +59,7 @@
               <ion-text>{{ fichas.observaciones }}</ion-text>
             </ion-item>
           </ion-list>
+          <ion-button class="menucolor" (click)="modal.dismiss()">Cerrar</ion-button>
           <div *ngIf="!fichas">
             <p>No se encontraron datos para el alumno ingresado.</p>
           </div>

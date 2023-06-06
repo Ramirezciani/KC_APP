@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { DbService } from 'src/app/services/db.service';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,8 @@ export class LoginPage {
   password: string = '';
   public alertButtons = ['OK'];
 
-  constructor(private router: Router, private http:HttpClient, private alert:AlertController, private loadingCtrl:LoadingController) { }
+  constructor(private router: Router, private http:HttpClient, private alert:AlertController, 
+    private loadingCtrl:LoadingController, private menuController: MenuController) { }
 
   cancelar() {
     console.log('Cancelar');
@@ -91,4 +92,9 @@ presentAlert(header: string, subHeader: string, message: string) {
     }
   }
 
+  ionViewDidEnter() {
+    this.menuController.enable(false); // Deshabilita el menú
+  }
+
+   
 }
