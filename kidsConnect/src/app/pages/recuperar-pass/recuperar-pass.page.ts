@@ -6,6 +6,7 @@ import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-recuperar-pass',
   templateUrl: 'recuperar-pass.page.html',
@@ -22,7 +23,8 @@ export class RecuperarPassPage implements OnInit {
   showPassword: boolean = false;
   nombreUser = '';
   correoElectronico = '';
-  emailAdmin = 'pa.ramirezciani13@gmail.com';
+ 
+  rutUsuario = '';
 
   constructor(private menuCtrl: MenuController,
               private http: HttpClient,
@@ -89,7 +91,7 @@ export class RecuperarPassPage implements OnInit {
     );
   }
   
-
+  //Funcion para aplicar los toast 
   async presentToast(message: string, position: 'top' | 'middle' | 'bottom') {
     const toast = await this.toast.create({
       message: message,
@@ -100,7 +102,7 @@ export class RecuperarPassPage implements OnInit {
     toast.present();
   }
 
-
+// funcion para mostrar los password 
   show_pass() {
     const passwordInput = document.getElementById('password') as HTMLInputElement;
     if (passwordInput.type === 'password') {
@@ -113,6 +115,14 @@ export class RecuperarPassPage implements OnInit {
   enviarCorreoRecuperacion() {
     const subject = 'Solicitud de recuperación de contraseña';
     const correoElectronico = this.correoElectronico; // Obtener el valor del campo de entrada de correo electrónico
+    const rutUsuario = this.rutUsuario; // Obtener el valor del campo de entrada de rut
+    const emailAdmin = 'kidsconnect2023@gmail.com';
+  
+    // Validar si se ha ingresado un rut
+    if (!rutUsuario || rutUsuario.trim() === '') {
+      this.presentToast('Por favor ingresa tu rut', 'bottom');
+      return;
+    }
   
     // Validar si se ha ingresado un correo electrónico
     if (!correoElectronico || correoElectronico.trim() === '') {
@@ -120,16 +130,13 @@ export class RecuperarPassPage implements OnInit {
       return;
     }
   
-    const rutUsuario = ' '; // Obtener el rut del usuario almacenado en localStorage
+    const body = `Solicito recuperación de contraseña.\nRut: ${rutUsuario}\nCorreo electrónico: ${correoElectronico}`;
   
-    const body = `Se ha recibido una solicitud de recuperación de contraseña.\nRut del usuario: ${rutUsuario}`;
+    const mailTo = `mailto:${encodeURIComponent(emailAdmin)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   
-    const mailTo = `mailto:${this.emailAdmin}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  
-    // Redirigir al cliente de correo con los datos del correo predefinidos
-    window.location.href = mailTo;
+    // Abrir la aplicación de correo con los datos del correo predefinidos
+    window.open(mailTo, '_blank');
   }
-
 
   ir_login(){
     this.router.navigate(['/login'])
