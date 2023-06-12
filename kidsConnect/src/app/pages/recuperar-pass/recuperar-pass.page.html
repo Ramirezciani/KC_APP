@@ -59,7 +59,7 @@
       <!-- Correo electrónico -->
       <ion-item class="menucolor">
         <ion-label position="floating">Correo electrónico:</ion-label>
-        <ion-input type="email" [(ngModel)]="correoElectronico" name="correoElectronico" placeholder="Escribe tu correo a donde llegará"></ion-input>
+        <ion-input type="email" [(ngModel)]="correoElectronico" name="correoElectronico" placeholder="Escribe tu correo a donde te mandaremos la respuesta"></ion-input>
       </ion-item>
 
       <!-- Botón de envío -->
@@ -69,8 +69,8 @@
 </ion-card>
 
  
-    <ion-icon name="home-outline"></ion-icon>
-    <a (click)="ir_login()">Volver al Inicio de sesion</a>
+    
+    <ion-button class="boton_aceptar" (click)="ir_login()"> Volver Inicio de sesion</ion-button> 
 
 
 </ion-content>
