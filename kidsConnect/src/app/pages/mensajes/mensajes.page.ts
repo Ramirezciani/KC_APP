@@ -13,13 +13,14 @@ export class MensajesPage implements OnInit {
   
   mensajes : any[] = [];
 
-  constructor(private router: Router, private mensajeService: MensajeService,
+  constructor(private router: Router, 
+              private mensajeService: MensajeService,
               private menuCtrl:MenuController) {}
 
+
+ngOnInit() {
   
-              ngOnInit() {
-                
-              }
+}
 
   bandeja_entrada() {
     this.router.navigate(['/mensaje-recibido']);
