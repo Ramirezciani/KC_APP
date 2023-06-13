@@ -14,13 +14,25 @@
   <ion-card class="menucolor">
     <ion-card-header>
       <ion-card-title>Eventos </ion-card-title>
-      <ion-card-subtitle>Revisa los proximos</ion-card-subtitle>
+      <ion-card-subtitle>Revisa los próximos</ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
-      
+      <div *ngIf="mensajesFiltrados && mensajesFiltrados.length > 0">
+        <h2>Mensajes:</h2>
+        <ion-list>
+          <ion-item *ngFor="let mensaje of mensajesFiltrados">
+            <!-- Mostrar los detalles del mensaje -->
+            <ion-label>{{ mensaje.titulo }}</ion-label>
+            <p>{{ mensaje.contenido }}</p>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div *ngIf="!(mensajesFiltrados && mensajesFiltrados.length > 0)">
+        <p>No hay mensajes disponibles.</p>
+      </div>
     </ion-card-content>
   </ion-card>
 
-  <ion-datetime class="toolbar" presentation="date"></ion-datetime>
+  <ion-datetime displayFormat="YYYY/MM/DD" [(ngModel)]="fechaSeleccionada" (ionChange)="filtrarMensajesPorFecha()" class="toolbar"></ion-datetime>
 </ion-content>
