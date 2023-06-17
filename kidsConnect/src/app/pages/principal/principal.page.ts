@@ -50,11 +50,14 @@ export class PrincipalPage implements OnInit {
     this.router.navigate(['/eventos'])
   }
 
-  onClick(){
-    this.menuCtrl.toggle();
+  onClick() {
+    setTimeout(() => {
+      this.menuCtrl.toggle();
+    }, 100);
+  }
 
   }
 
   
 
-}
+

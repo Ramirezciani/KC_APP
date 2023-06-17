@@ -49,7 +49,9 @@ export class MensajeRecibidoPage implements OnInit {
   }
 
   onClick() {
-    this.menuCtrl.toggle();
+    setTimeout(() => {
+      this.menuCtrl.toggle();
+    }, 100);
   }
 
   ir_send() {

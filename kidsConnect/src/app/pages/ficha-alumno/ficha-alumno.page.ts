@@ -52,7 +52,9 @@ export class FichaAlumnoPage implements OnInit {
     
   
   onClick() {
-    this.menuCtrl.toggle();
+    setTimeout(() => {
+      this.menuCtrl.toggle();
+    }, 100);
   }
 
   async presentToast(position: 'top' | 'middle' | 'bottom', message: string) {

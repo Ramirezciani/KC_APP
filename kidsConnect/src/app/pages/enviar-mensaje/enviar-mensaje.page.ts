@@ -123,7 +123,9 @@ export class EnviarMensajePage {
 
   //Funcion para abrir el menu lateral
   onClick() {
-    this.menuCtrl.toggle();
+    setTimeout(() => {
+      this.menuCtrl.toggle();
+    }, 100);
   }
 
   async mostrarToast(mensaje: string) {

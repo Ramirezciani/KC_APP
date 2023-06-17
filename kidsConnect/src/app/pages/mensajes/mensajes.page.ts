@@ -30,9 +30,10 @@ ngOnInit() {
     this.router.navigate(['/principal']);
   }
 
-  onClick(){
-    this.menuCtrl.toggle();
-
+  onClick() {
+    setTimeout(() => {
+      this.menuCtrl.toggle();
+    }, 100);
   }
 
   ir_send(){
