@@ -35,6 +35,7 @@ export class FichaAlumnoPage implements OnInit {
         if (response.data && response.data.length > 0) {
           this.fichas = response.data[0];
           this.presentToast('bottom', 'Ficha encontrada. Presiona ver ficha.');
+          console.log(this.fichas)
         } else {
           // Mostrar mensaje si no hay datos de la ficha
           this.presentToast('bottom', 'No se encontraron datos para el alumno ingresado.');

@@ -32,35 +32,39 @@
       <ng-template>
         <ion-header>
           <ion-toolbar class="toolbar">
-
             <ion-title>Ficha</ion-title>
           </ion-toolbar>
         </ion-header>
         <ion-content class="ion-padding">
-          <ion-list *ngIf="fichas">
-            <ion-item class="mensaje">
-              <ion-label>Nombre:</ion-label>
-              <ion-text>{{ fichas.nom_alu }} {{ fichas.ap_pat_alu }} {{ fichas.ap_mat_alu }}</ion-text>
-            </ion-item >
-            <ion-item class="mensaje">
-              <ion-label>Rut Alumno:</ion-label>
-              <ion-text>{{ fichas.alumno_rut_alu }}</ion-text>
-            </ion-item >
-            <ion-item class="mensaje">
-              <ion-label>Fecha creación:</ion-label>
-              <ion-text>{{ fichas.fec_cre }}</ion-text>
-            </ion-item>
-            <ion-item class="mensaje">
-              <ion-label>Curso:</ion-label>
-              <ion-text>{{ fichas.nom_cur }}</ion-text>
-            </ion-item>
-            <ion-item class="mensaje">
-              <ion-label>Observaciones: </ion-label>
-              <ion-list>
-                <ion-item *ngFor="let observacion of fichas.observaciones">{{ observacion }}</ion-item>
-              </ion-list>
-            </ion-item>
-          </ion-list>
+          
+
+          <ion-card *ngIf="fichas" class="inputs">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6">
+                  <ion-card-header>
+                    <ion-card-title>Nombre Alumno:  
+                      {{ fichas.nom_alu }} {{ fichas.ap_pat_alu }} {{ fichas.ap_mat_alu }}
+                    </ion-card-title>
+                    <ion-card-subtitle>Rut:  
+                      {{ fichas.alumno_rut_alu }}
+                    </ion-card-subtitle>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <h3>Curso: {{ fichas.nom_cur }}</h3>
+                  </ion-card-content>
+                  <ion-card-content>
+                    <h3>Historial: </h3>
+                    {{fichas.observaciones}}
+                  </ion-card-content>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-img src="assets/dinosaurio.png"></ion-img>
+                </ion-col>
+
+              </ion-row>
+            </ion-grid>
+          </ion-card>
           <ion-button class="menucolor" (click)="modal.dismiss()">Cerrar</ion-button>
           <div *ngIf="!fichas">
             <p>No se encontraron datos para el alumno ingresado.</p>

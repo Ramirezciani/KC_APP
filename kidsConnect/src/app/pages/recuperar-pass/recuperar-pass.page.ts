@@ -76,11 +76,11 @@ export class RecuperarPassPage implements OnInit {
         this.apiService.actualizarUsuario(rutUser, newPass).subscribe(
           (response) => {
             console.log('Campo actualizado correctamente');
-            this.presentToast('Campo actualizado correctamente', 'bottom');
+            this.presentToast('Contraseña actualizada correctamente', 'bottom');
           },
           (error) => {
             console.error('Error al actualizar el campo:', error);
-            this.presentToast('Error al actualizar el campo', 'bottom');
+            this.presentToast('Error al actualizar la contraseña', 'bottom');
           }
         );
       },

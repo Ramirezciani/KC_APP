@@ -127,6 +127,7 @@ export class EnviarMensajePage {
       this.menuCtrl.toggle();
     }, 100);
   }
+ 
 
   async mostrarToast(mensaje: string) {
     const toast = await this.toastCtrl.create({
