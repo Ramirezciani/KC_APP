@@ -1,7 +1,10 @@
+
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MensajeService } from 'src/app/services/mensajes.service';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { MenuController, ToastController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-enviar-mensaje',
@@ -13,13 +16,18 @@ export class EnviarMensajePage {
   docentes: any[] = [];
   docenteSeleccionado: any = null;
   mensaje: string = '';
-  nombreEmisor: string = '';
   tipoMensaje: string = '';
   rutEmisor: number;
+  nombreEmisor: string = '';
+  nombreUsuario: string = '';
   
 
-  constructor(private mensajeService: MensajeService, private http: HttpClient) {
+  constructor(private mensajeService: MensajeService, 
+              private http: HttpClient, 
+              private menuCtrl:MenuController,
+              private toastCtrl: ToastController) {
     this.rutEmisor = parseInt(localStorage.getItem('rutUsuario') || '0');
+    this.nombreEmisor = localStorage.getItem('nombreUsuario') || '';
   }
 
   async buscarDocentes() {
@@ -29,12 +37,12 @@ export class EnviarMensajePage {
 
       if (response && response.success) {
         this.docentes = response.data;
-        console.log('Docentes encontrados:', this.docentes);
+        this.mostrarToast('Busqueda Exitosa');
       } else {
-        console.log('No se encontraron docentes con el nombre especificado');
+        this.mostrarToast('No existen coincidencias');
       }
     } catch (error) {
-      console.log('Error al buscar los docentes:', error);
+       this.mostrarToast('Error en la busqueda de docentes');
     }
   }
 
@@ -51,7 +59,7 @@ export class EnviarMensajePage {
       const nomReceptor = this.docenteSeleccionado.nombre_completo;
       const contMensaje = this.mensaje;
       const rutEmisor = this.rutEmisor;
-      const nomEmisor = this.nombreEmisor;
+      const nombreEmisor = this.nombreEmisor
 
       // Map the selected type to the API type value
       // let tipoMensajeApiValue = '';
@@ -87,28 +95,47 @@ export class EnviarMensajePage {
       // Crea el objeto de datos para la solicitud POST
       const data = {
         rut_emisor: rutEmisor,
-        nombre_emisor: nomEmisor,
+        nombre_emisor: nombreEmisor,
         rut_receptor: rutReceptor,
         nombre_receptor: nomReceptor,
         cont_mensaje: contMensaje,
-        img_mensaje: '', // Debes proporcionar el valor adecuado si se incluye la opción de enviar imagen
+        img_mensaje: '',
         tipo_mensaje: tipoMensajeApiValue
       };
 
 
       this.http.post('http://tmp.enred.cl/kc/rest/buzon.php', data, { responseType: 'text' }).subscribe(
         (response: any) => {
-          console.log('Mensaje enviado:', response);
+          this.mostrarToast('Envío exitoso' );
           // Resto de la lógica después de enviar el mensaje...
         },
         (error: HttpErrorResponse) => {
           if (error && error.error) {
-            console.log('Error al enviar el mensaje:', error.error);
+            this.mostrarToast('Error al enviar mensaje a');
           } else {
             console.log('Error desconocido');
           }
         }
       );
+      }
     }
+
+
+  //Funcion para abrir el menu lateral
+  onClick() {
+    setTimeout(() => {
+      this.menuCtrl.toggle();
+    }, 100);
+  }
+ 
+
+  async mostrarToast(mensaje: string) {
+    const toast = await this.toastCtrl.create({
+      message: mensaje,
+      duration: 3000, // Duración del Toast en milisegundos
+      position: 'bottom' // Posición del Toast en la pantalla (top, bottom, middle)
+    });
+    await toast.present();
   }
 }
+

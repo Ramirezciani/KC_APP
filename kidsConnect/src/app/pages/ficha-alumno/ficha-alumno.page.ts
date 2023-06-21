@@ -3,7 +3,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
-import { FormsModule } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular';
 
@@ -27,17 +26,17 @@ export class FichaAlumnoPage implements OnInit {
 
   ngOnInit() {}
 
-  
-
   async buscarFicha() {
     try {
-      const response: any = await this.apiService.buscarFichaPorRut(this.rutAlumno).toPromise();
+      const response: any = await this.apiService.buscarHistorialFicha(this.rutAlumno).toPromise();
       console.log(response); // Imprimir el resultado en la consola
   
       if (response && response.success) {
-        this.fichas = response.data;
-        this.presentToast('bottom', 'Ficha Encontrada presiona ver ficha.');
-        if (!this.fichas || Object.keys(this.fichas).length === 0) {
+        if (response.data && response.data.length > 0) {
+          this.fichas = response.data[0];
+          this.presentToast('bottom', 'Ficha encontrada. Presiona ver ficha.');
+          console.log(this.fichas)
+        } else {
           // Mostrar mensaje si no hay datos de la ficha
           this.presentToast('bottom', 'No se encontraron datos para el alumno ingresado.');
         }
@@ -51,11 +50,12 @@ export class FichaAlumnoPage implements OnInit {
       this.presentToast('bottom', 'Debe ingresar un rut.');
     }
   }
+    
   
-  
-
   onClick() {
-    this.menuCtrl.toggle();
+    setTimeout(() => {
+      this.menuCtrl.toggle();
+    }, 100);
   }
 
   async presentToast(position: 'top' | 'middle' | 'bottom', message: string) {

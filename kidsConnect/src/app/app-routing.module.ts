@@ -42,7 +42,11 @@ const routes: Routes = [
   {
     path: 'recuperar-pass',
     loadChildren: () => import('./pages/recuperar-pass/recuperar-pass.module').then( m => m.RecuperarPassPageModule)
+  },  {
+    path: 'responder-mensaje',
+    loadChildren: () => import('./pages/responder-mensaje/responder-mensaje.module').then( m => m.ResponderMensajePageModule)
   },
+
 
 
 

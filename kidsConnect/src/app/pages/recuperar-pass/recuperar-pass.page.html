@@ -12,6 +12,7 @@
     </ion-card-header>
     <ion-card-content>
       <!-- Rut user -->
+      
       <label for="rut">RUT:</label>
       <ion-item  class="menucolor">
         <ion-input type="text" id="rut" [(ngModel)]="rutUser" placeholder="Tu Rut sin guion, puntos ni guion"></ion-input>
@@ -32,7 +33,7 @@
       <label for="confirmPassword">Confirmar Contraseña:</label>
       <ion-item  class="menucolor">
         <ion-input type="password" id="confirmPassword" [(ngModel)]="confirmPass" placeholder="Ingrese nuevamente la nueva contraseña"></ion-input>
-        
+
       </ion-item>
     </ion-card-content>
     <ion-button (click)="actualizarCampo(rutUser, passUser, newPass, confirmPass)">Actualizar</ion-button>
@@ -40,35 +41,37 @@
 
   
 
-  <!-- Recuperar passs mediante correo -->
-  <ion-card color="medium">
-    <ion-card-header>
-      <ion-card-title>¿Olvidaste tu contraseña?</ion-card-title>
-      <ion-card-subtitle>Recupera tu contraseña con nosotros</ion-card-subtitle>
-    </ion-card-header>
-  
-    <ion-card-content>
-      <form (ngSubmit)="enviarCorreoRecuperacion(rutUser, nombreUser)">
-        <!-- Rut user -->
-        <ion-item class="menucolor">
-          <ion-label position="floating">RUT:</ion-label>
-          <ion-input type="text" [(ngModel)]="rutUser" name="rutUser"></ion-input>
-        </ion-item>
-  
-        <!-- Nombre user -->
-        <ion-item class="menucolor">
-          <ion-label position="floating">Nombre:</ion-label>
-          <ion-input type="text" [(ngModel)]="nombreUser" name="nombreUser"></ion-input>
-        </ion-item>
-  
-      </form>
-    </ion-card-content>
-    <ion-button type="submit">Enviar</ion-button>
-  </ion-card>
+
+<!-- Recuperar contraseña mediante correo -->
+<ion-card color="medium">
+  <ion-card-header>
+    <ion-card-title>¿Olvidaste tu contraseña?</ion-card-title>
+    <ion-card-subtitle>Recupera tu contraseña con nosotros</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    <form (ngSubmit)="enviarCorreoRecuperacion()">
+      <!-- Rut del usuario -->
+      <ion-item class="menucolor">
+        <ion-label position="floating">Rut:</ion-label>
+        <ion-input type="text" [(ngModel)]="rutUsuario" name="rutUsuario" placeholder="Escribe tu rut"></ion-input>
+      </ion-item>
+
+      <!-- Correo electrónico -->
+      <ion-item class="menucolor">
+        <ion-label position="floating">Correo electrónico:</ion-label>
+        <ion-input type="email" [(ngModel)]="correoElectronico" name="correoElectronico" placeholder="Escribe tu correo a donde te mandaremos la respuesta"></ion-input>
+      </ion-item>
+
+      <!-- Botón de envío -->
+      <ion-button type="submit" expand="block">Enviar</ion-button>
+    </form>
+  </ion-card-content>
+</ion-card>
 
  
-    <ion-icon name="home-outline"></ion-icon>
-    <a (click)="ir_login()">Volver al Inicio de sesion</a>
+    
+    <ion-button class="boton_aceptar" (click)="ir_login()"> Volver Inicio de sesion</ion-button> 
 
 
 </ion-content>

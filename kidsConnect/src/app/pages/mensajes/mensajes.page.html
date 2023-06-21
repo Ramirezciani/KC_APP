@@ -15,22 +15,11 @@
       <ion-card-title>Mensajes Recibidos</ion-card-title>
       <ion-card-subtitle>Bandeja de Entrada</ion-card-subtitle>
     </ion-card-header>
+    <ion-button class="boton_aceptar" (click)="bandeja_entrada()">Bandeja de Entrada</ion-button>
   </ion-card>
-  <ion-list class="boton_aceptar">
-    <ion-card  *ngFor="let mensaje of mensajes" class="ficha">
-      <ion-card-header>
-        <ion-card-subtitle>Fecha</ion-card-subtitle>
-        <ion-card-subtitle>{{ mensaje.fch_crea }}</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-label>Enviado por: </ion-label><br>
-        <ion-text>{{ mensaje.usuario_rut_us }}</ion-text><br>
-        <ion-text>{{ mensaje.cont_msj }}</ion-text>
-      </ion-card-content>
-      <ion-label>Imagen</ion-label>
-      <ion-text>{{ mensaje.img_msj }}</ion-text>
-    </ion-card>
-  </ion-list>
+
+
+ 
 
   <ion-card class="menucolor">
     <ion-card-header>

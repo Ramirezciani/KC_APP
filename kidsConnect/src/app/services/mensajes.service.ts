@@ -12,6 +12,7 @@ export class MensajeService {
 
   constructor(private http: HttpClient) {}
 
+  // Obtener nombre docente
   obtenerDocentes(nombre: string): Observable<any> {
     const encodedNombre = encodeURIComponent(nombre);
     const url = `${this.apiUrl}?nombreFuncion=buscarDocentesPorNombre&nombre=${encodedNombre}`;
@@ -23,6 +24,8 @@ export class MensajeService {
     );
   }
   
+
+  //Enviar mensaje docente
   private api = 'http://tmp.enred.cl/kc/rest/buzon.php';
 
   
@@ -38,5 +41,12 @@ export class MensajeService {
       tipo_mensaje: tipoMensaje
     };
     return this.http.post(url, data);
+  }
+
+  private URL = 'http://tmp.enred.cl/kc/rest/get_mensaje_by_rut.php';
+
+  getMensajesByRut(rut: string): Observable<any[]> {
+    const url = `${this.URL}?nombreFuncion=buscarMensajesPorRut&rut_receptor=${rut}`;
+    return this.http.get<any[]>(url);
   }
 }

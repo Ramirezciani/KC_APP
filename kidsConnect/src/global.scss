@@ -31,10 +31,15 @@
     
 
 //Color de fondo
+// ion-content{
+//         --ion-background-color:#e3dacb
+//         ;
+//     }
+
+
 ion-content{
-        --ion-background-color:#e3dacb
-        ;
-    }
+    --background: url(assets/fondo-app.jpg) 0 0/100% 100% no-repeat;
+}
 
 //Color boton aceptar para todas las vistas
 .boton_aceptar{
@@ -54,7 +59,7 @@ ion-content{
 //Color de las cartas
 
 .menucolor{
-    --background: #faf4e0;
+    --background: #98d9b6;
     // medium ionic colors
 }
 
@@ -78,3 +83,6 @@ ion-content{
     --background: #AFEEEE;
 }
 
+.mensaje{
+    --background: #9fd86b;
+}

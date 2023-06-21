@@ -13,14 +13,46 @@
 
   <ion-card class="menucolor">
     <ion-card-header>
-      <ion-card-title>Eventos </ion-card-title>
-      <ion-card-subtitle>Revisa los proximos</ion-card-subtitle>
+      <ion-card-title>Eventos Y Anuncios</ion-card-title>
+      <ion-card-subtitle>Revisa los próximos</ion-card-subtitle>
     </ion-card-header>
-  
     <ion-card-content>
-      
+        <!-- Select para filtrar por mes -->
+  <ion-item class="menucolor">
+    <ion-select placeholder="Seleccionar mes" [(ngModel)]="mesSeleccionado" (ionChange)="filtrarMensajes()">
+      <ion-select-option value="1">Enero</ion-select-option>
+      <ion-select-option value="2">Febrero</ion-select-option>
+      <ion-select-option value="3">Marzo</ion-select-option>
+      <ion-select-option value="4">Abril</ion-select-option>
+      <ion-select-option value="5">Mayo</ion-select-option>
+      <ion-select-option value="6">Junio</ion-select-option>
+      <ion-select-option value="7">Julio</ion-select-option>
+      <ion-select-option value="8">Agosto</ion-select-option>
+      <ion-select-option value="9">Septiembre</ion-select-option>
+      <ion-select-option value="10">Octubre</ion-select-option>
+      <ion-select-option value="11">Noviembre</ion-select-option>
+      <ion-select-option value="12">Diciembre</ion-select-option>
+      <!-- Agrega los demás meses aquí -->
+    </ion-select>
+  </ion-item>
     </ion-card-content>
   </ion-card>
 
-  <ion-datetime class="toolbar" presentation="date"></ion-datetime>
+
+  
+
+  <!-- Contenido de la página -->
+  <ion-card class="mensaje" *ngFor="let mensaje of mensajesFiltrados">
+    <ion-card-header>
+      <ion-card-title>{{ mensaje.tipo_mensaje }}</ion-card-title>
+      <ion-card-subtitle>{{ mensaje.fecha_envio }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      Enviado por: {{ mensaje.nom_emisor }}
+      <div>
+        {{ mensaje.cont_mensaje }}
+      </div>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { DbService } from 'src/app/services/db.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController, MenuController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-login',
@@ -16,42 +17,47 @@ export class LoginPage {
   password: string = '';
   public alertButtons = ['OK'];
 
-  constructor(private router: Router, private http:HttpClient, private alert:AlertController) { }
+  constructor(private router: Router, private http:HttpClient, private alert:AlertController, 
+    private loadingCtrl:LoadingController, private menuController: MenuController) { }
 
   cancelar() {
     console.log('Cancelar');
   
   }
 
-login() {
-  if (!this.rut || !this.password) {
-    // Verificar si los campos de rut y contraseña están vacíos
-    this.presentAlert('Alerta', 'Campos vacíos', 'Por favor ingrese su rut y contraseña.');
-    return;
-  }
-
-  const data = {
-    rut: this.rut,
-    password: this.password,
-  };
-
-
-  this.http.post('https://tmp.enred.cl/kc/rest/login.php', data).subscribe(
-    (response: any) => {
-      // El inicio de sesión fue exitoso
-          localStorage.setItem('rutUsuario', this.rut);
-          this.router.navigate(['/principal']);
-          console.log('Inicio de sesion exitoso')
-          
-         // Tiempo de espera en milisegundos (ejemplo: 3000 para 3 segundos)
-    },
-    (error) => {
-      // Hubo un error en el inicio de sesión
-      console.error('Error en el inicio de sesión', error);
-      this.presentAlert('Error', 'Inicio de sesión fallido', 'Por favor verifique su rut y contraseña.');
+  async login() {
+    if (!this.rut || !this.password) {
+      // Verificar si los campos de rut y contraseña están vacíos
+      this.presentAlert('Alerta', 'Campos vacíos', 'Por favor ingrese su rut y contraseña.');
+      return;
     }
-  );
-}
+
+    const loading = await this.loadingCtrl.create({
+      message: 'Iniciando sesión...'
+    });
+    await loading.present();
+
+    const data = {
+      rut: this.rut,
+      password: this.password,
+    };
+
+    this.http.post('https://tmp.enred.cl/kc/rest/login.php', data).subscribe(
+      (response: any) => {
+        // El inicio de sesión fue exitoso
+        localStorage.setItem('rutUsuario', this.rut);
+        this.router.navigate(['/principal']);
+        console.log('Inicio de sesión exitoso');
+        loading.dismiss();
+      },
+      (error) => {
+        // Hubo un error en el inicio de sesión
+        console.error('Error en el inicio de sesión', error);
+        this.presentAlert('Error', 'Inicio de sesión fallido', 'Por favor verifique su rut y contraseña.');
+        loading.dismiss();
+      }
+    );
+  }
 
 
 presentAlert(header: string, subHeader: string, message: string) {
@@ -87,4 +93,9 @@ presentAlert(header: string, subHeader: string, message: string) {
     }
   }
 
+  ionViewDidEnter() {
+    this.menuController.enable(false); // Deshabilita el menú
+  }
+
+   
 }

@@ -22,9 +22,9 @@ export class ApiService {
   //   return this.http.get('http://tmp.enred.cl/get_region.php');
   // }
 
-  buscarFichaPorRut(rutAlumno: string): Observable<any> {
+  buscarHistorialFicha(rutAlumno: string): Observable<any> {
     const encodedRut = encodeURIComponent(rutAlumno);
-    const url = `${this.apiUrl}?nombreFuncion=buscarFichaPorRut&rut_alumno=${encodedRut}`;
+    const url = `${this.apiUrl}?nombreFuncion=buscarHistorialFicha&rut_alumno=${encodedRut}`;
     return this.http.get(url);
   }
 
