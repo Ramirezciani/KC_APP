@@ -46,6 +46,10 @@ const routes: Routes = [
     path: 'responder-mensaje',
     loadChildren: () => import('./pages/responder-mensaje/responder-mensaje.module').then( m => m.ResponderMensajePageModule)
   },
+  {
+    path: 'historial-ficha',
+    loadChildren: () => import('./pages/historial-ficha/historial-ficha.module').then( m => m.HistorialFichaPageModule)
+  },
 
 
 

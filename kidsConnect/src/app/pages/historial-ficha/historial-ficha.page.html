@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Historial Ficha
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">RUT del alumno</ion-label>
+    <ion-input type="text" [(ngModel)]="rutAlumno"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="buscarHistorial()">Buscar Historial</ion-button>
+
+  <ion-list *ngIf="historial.length > 0">
+    <ion-item *ngFor="let item of historial">
+      <ion-label>{{ item.fecha }}</ion-label>
+      <ion-label>{{ item.cod_fc }}</ion-label>
+      <ion-label>{{ item.nom_alu }}</ion-label>
+      <ion-label>{{ item.ap_pat_alu }}</ion-label>
+      <ion-label>{{ item.ap_mat_alu }}</ion-label>
+      <ion-label>{{ item.fec_cre }}</ion-label>
+      <ion-label>{{ item.con_fc }}</ion-label>
+      <ion-label>{{ item.img_est }}</ion-label>
+      <ion-label>{{ item.alumno_rut_alu }}</ion-label>
+      <ion-label>{{ item.alumno_cod_cur }}</ion-label>
+      <ion-label>{{ item.cod_cur }}</ion-label>
+      <ion-label>{{ item.nom_cur }}</ion-label>
+      <ion-label *ngFor="let observacion of item.observaciones">{{ observacion }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
