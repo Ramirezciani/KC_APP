@@ -103,14 +103,15 @@ export class RecuperarPassPage implements OnInit {
   }
 
 // funcion para mostrar los password 
-  show_pass() {
-    const passwordInput = document.getElementById('password') as HTMLInputElement;
-    if (passwordInput.type === 'password') {
-      passwordInput.type = 'text';
-    } else {
-      passwordInput.type = 'password';
-    }
+show_pass(inputId: string) {
+  const passwordInput = document.getElementById(inputId) as HTMLInputElement;
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+  } else {
+    passwordInput.type = 'password';
   }
+}
+
   
   enviarCorreoRecuperacion() {
     const subject = 'Solicitud de recuperación de contraseña';

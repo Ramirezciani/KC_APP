@@ -17,23 +17,25 @@
       <ion-item  class="menucolor">
         <ion-input type="text" id="rut" [(ngModel)]="rutUser" placeholder="Tu Rut sin guion, puntos ni guion"></ion-input>
       </ion-item>
-      <!-- Current Password -->
+        <!-- Current Password -->
       <label for="password">Contraseña actual:</label>
       <ion-item class="menucolor">
         <ion-input type="password" id="password" [(ngModel)]="passUser" placeholder="Ingrese la contraseña actual"></ion-input>
-        <ion-icon name="eye" slot="end" [name]="showPassword ? 'eye-off' : 'eye'" (click)="show_pass()"></ion-icon>
+        <ion-icon name="eye" slot="end" [name]="showPassword ? 'eye-off' : 'eye'" (click)="show_pass('password')"></ion-icon>
       </ion-item>
+
       <!-- New password -->
       <label for="newPassword">Nueva Contraseña:</label>
-      <ion-item  class="menucolor">
+      <ion-item class="menucolor">
         <ion-input type="password" id="newPassword" [(ngModel)]="newPass" placeholder="Ingrese la nueva contraseña"></ion-input>
-        
+        <ion-icon name="eye" slot="end" [name]="showPassword ? 'eye-off' : 'eye'" (click)="show_pass('newPassword')"></ion-icon>
       </ion-item>
+
       <!-- Confirmar new password -->
       <label for="confirmPassword">Confirmar Contraseña:</label>
-      <ion-item  class="menucolor">
+      <ion-item class="menucolor">
         <ion-input type="password" id="confirmPassword" [(ngModel)]="confirmPass" placeholder="Ingrese nuevamente la nueva contraseña"></ion-input>
-
+        <ion-icon name="eye" slot="end" [name]="showPassword ? 'eye-off' : 'eye'" (click)="show_pass('confirmPassword')"></ion-icon>
       </ion-item>
     </ion-card-content>
     <ion-button (click)="actualizarCampo(rutUser, passUser, newPass, confirmPass)">Actualizar</ion-button>

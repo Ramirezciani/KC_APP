@@ -66,6 +66,8 @@ export class EventosPage implements OnInit {
   }
 
   onClick() {
-    this.menuCtrl.toggle();
+    setTimeout(() => {
+      this.menuCtrl.toggle();
+    }, 100);
   }
 }
