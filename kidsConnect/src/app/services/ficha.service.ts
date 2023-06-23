@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FichaService {
-  private apiUrl = 'http://tmp.enred.cl/html/kc/rest/test_ficha.php';
+  private apiUrl = 'http://tmp.enred.cl/kc/rest/test_ficha.php';
 
   constructor(private http: HttpClient) { }
 

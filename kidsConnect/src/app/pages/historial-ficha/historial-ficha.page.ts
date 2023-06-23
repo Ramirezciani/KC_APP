@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FichaService } from 'src/app/services/ficha.service';
+import { MenuController, ToastController } from '@ionic/angular';
 
 interface HistorialResponse {
   success: boolean;
@@ -13,26 +14,57 @@ interface HistorialResponse {
   styleUrls: ['./historial-ficha.page.scss'],
 })
 export class HistorialFichaPage implements OnInit {
-  historial: any = [];
+  historial: any[] = [];
   rutAlumno: string = '';
 
-  constructor(private fichaService: FichaService) {}
+  constructor(
+    private fichaService: FichaService,
+    private toastController: ToastController,
+    private menuCtrl: MenuController
+  ) {}
 
   ngOnInit() {}
 
   buscarHistorial() {
-    this.fichaService.buscarHistorialFicha(this.rutAlumno).subscribe(
-      (response: HistorialResponse) => {
-        if (response.success) {
-          this.historial = response.data;
-          console.log(this.historial);
-        } else {
-          console.error(response.message);
+    if (this.rutAlumno.trim() !== '') {
+      this.fichaService.buscarHistorialFicha(this.rutAlumno).subscribe(
+        (response: HistorialResponse) => {
+          if (response.success) {
+            this.historial = response.data.data;
+            console.log(this.historial);
+          } else {
+            if (response.message) {
+              this.presentToast('bottom', response.message);
+            } else {
+              this.presentToast('bottom', 'Error al buscar el historial de la ficha.');
+            }
+          }
+        },
+        (error: any) => {
+          console.error(error);
+          this.presentToast('bottom', 'Error al buscar el historial de la ficha.');
         }
-      },
-      (error: any) => {
-        console.error(error);
-      }
-    );
+      );
+    } else {
+      this.presentToast('bottom', 'El campo RUT del alumno es obligatorio');
+    }
   }
+  
+
+  async presentToast(position: 'top' | 'middle' | 'bottom', message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1500,
+      position: position,
+    });
+
+    await toast.present();
+  }
+
+  onClick() {
+    setTimeout(() => {
+      this.menuCtrl.toggle();
+    }, 100);
+  }
+
 }

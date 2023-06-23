@@ -36,32 +36,30 @@
           </ion-toolbar>
         </ion-header>
         <ion-content class="ion-padding">
-          
-
           <ion-card *ngIf="fichas" class="inputs">
             <ion-grid>
               <ion-row>
                 <ion-col size="6">
                   <ion-card-header>
-                    <ion-card-title>Nombre Alumno:  
-                      {{ fichas.nom_alu }} {{ fichas.ap_pat_alu }} {{ fichas.ap_mat_alu }}
-                    </ion-card-title>
-                    <ion-card-subtitle>Rut:  
-                      {{ fichas.alumno_rut_alu }}
-                    </ion-card-subtitle>
+                    <ion-card-title>Nombre Alumno: {{ fichas?.nom_alu }} {{ fichas?.ap_pat_alu }} {{ fichas?.ap_mat_alu }}</ion-card-title>
+                    <ion-card-subtitle>Rut: {{ fichas?.alumno_rut_alu }}</ion-card-subtitle>
                   </ion-card-header>
                   <ion-card-content>
-                    <h3>Curso: {{ fichas.nom_cur }}</h3>
+                    <h3>Curso: {{ fichas?.nom_cur }}</h3>
                   </ion-card-content>
                   <ion-card-content>
                     <h3>Historial: </h3>
-                    {{fichas.observaciones}}
+                    <ion-list *ngIf="fichas?.observaciones && fichas?.observaciones.length > 0">
+                      <ion-item *ngFor="let observacion of fichas?.observaciones">{{ observacion }}</ion-item>
+                    </ion-list>
+                    <div *ngIf="!fichas?.observaciones || fichas?.observaciones.length === 0">
+                      <p>No hay historial disponible.</p>
+                    </div>
                   </ion-card-content>
                 </ion-col>
                 <ion-col size="6">
                   <ion-img src="assets/dinosaurio.png"></ion-img>
                 </ion-col>
-
               </ion-row>
             </ion-grid>
           </ion-card>

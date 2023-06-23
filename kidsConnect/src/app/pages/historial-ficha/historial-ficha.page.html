@@ -1,34 +1,77 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Historial Ficha
-    </ion-title>
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons (click)="onClick()">
+      <ion-button>
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-button>
+      <ion-title>Ficha Alumno</ion-title>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label position="floating">RUT del alumno</ion-label>
-    <ion-input type="text" [(ngModel)]="rutAlumno"></ion-input>
-  </ion-item>
-
-  <ion-button expand="full" (click)="buscarHistorial()">Buscar Historial</ion-button>
-
-  <ion-list *ngIf="historial.length > 0">
-    <ion-item *ngFor="let item of historial">
-      <ion-label>{{ item.fecha }}</ion-label>
-      <ion-label>{{ item.cod_fc }}</ion-label>
-      <ion-label>{{ item.nom_alu }}</ion-label>
-      <ion-label>{{ item.ap_pat_alu }}</ion-label>
-      <ion-label>{{ item.ap_mat_alu }}</ion-label>
-      <ion-label>{{ item.fec_cre }}</ion-label>
-      <ion-label>{{ item.con_fc }}</ion-label>
-      <ion-label>{{ item.img_est }}</ion-label>
-      <ion-label>{{ item.alumno_rut_alu }}</ion-label>
-      <ion-label>{{ item.alumno_cod_cur }}</ion-label>
-      <ion-label>{{ item.cod_cur }}</ion-label>
-      <ion-label>{{ item.nom_cur }}</ion-label>
-      <ion-label *ngFor="let observacion of item.observaciones">{{ observacion }}</ion-label>
+  <!-- carta para realizar la búsqueda -->
+  <ion-card class="menucolor">
+    <ion-card-header>
+      <ion-card-title>Busca la ficha por Rut Alumno</ion-card-title>
+      <ion-card-subtitle>El rut debe ir sin puntos, sin guion y sin dv</ion-card-subtitle>
+    </ion-card-header>
+    <ion-item class="inputs">
+      <ion-label position="floating">RUT del Alumno</ion-label>
+      <ion-input [(ngModel)]="rutAlumno"></ion-input>
     </ion-item>
-  </ion-list>
+    <ion-button class="boton_aceptar" expand="full" (click)="buscarHistorial()">Buscar</ion-button>
+    <ion-card-content>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- MODAL PARA FICHA -->
+  <ion-content class="mensaje" class="ion-padding">
+    <ion-button id="open-modal" expand="block">Ver Ficha</ion-button>
+    <ion-modal [keepContentsMounted]="true" trigger="open-modal" #modal>
+      <ng-template>
+        <ion-header>
+          <ion-toolbar class="toolbar">
+            <ion-title>Ficha</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+
+          <ion-card *ngIf="historial && historial.length > 0" class="inputs">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6">
+                  <ion-card-header>
+                    <ion-card-title>Nombre Alumno:
+                      {{ historial[0]?.nom_alu }} {{ historial[0]?.ap_pat_alu }} {{ historial[0]?.ap_mat_alu }}
+                    </ion-card-title>
+                    <ion-card-subtitle>Rut:
+                      {{ historial[0]?.alumno_rut_alu }}
+                    </ion-card-subtitle>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <h3>Curso: {{ historial[0]?.nom_cur }}</h3>
+                  </ion-card-content>
+                  <ion-card-content>
+                    <h3>Historial: </h3>
+                    <ion-label *ngFor="let observacion of historial[0]?.observaciones">
+                      - {{ observacion }} <br>
+                    </ion-label>
+                  </ion-card-content>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-img src="assets/dinosaurio.png"></ion-img>
+                </ion-col>
+
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+          <ion-button class="menucolor" (click)="modal.dismiss()">Cerrar</ion-button>
+          <div *ngIf="!historial || historial.length === 0">
+            <p>No se encontraron datos para el alumno ingresado.</p>
+          </div>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </ion-content>
 </ion-content>

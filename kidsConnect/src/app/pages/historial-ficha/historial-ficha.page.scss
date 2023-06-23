@@ -1,0 +1,67 @@
+*{
+    text-align: center;
+    color: black;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+    
+}
+
+.card{
+    border-radius: 5%;
+}
+
+a{
+    padding: 5px;
+    color: #574345;
+    text-shadow: 1px;
+    position: relative;
+}
+a:hover{
+    color: orange;
+}
+
+ion-item{
+    background-color: transparent;
+    border-radius: 5px;
+    border: solid white 1px;
+    text-decoration: none;
+    padding-top:2px;
+    padding-bottom: 2px;
+    margin:10px;
+
+}
+
+
+
+
+.boton_aceptar{
+    border: solid  1px;
+    margin: 20px;
+    border-radius: 8px;
+}
+
+
+// Informacion de la ficha
+
+  
+  
+
+
+
+  img {
+    margin-top: 10px;
+    height: 20%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    border: 2px solid orange; /* Agrega esta línea para el borde */
+    box-sizing: border-box; /* Asegura que el borde esté incluido en el tamaño total de la imagen */
+    border-radius: 50px;
+  }
+
+  ion-modal{
+    color: black;
+  }
+
+
