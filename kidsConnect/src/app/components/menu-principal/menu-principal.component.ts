@@ -32,7 +32,7 @@ export class MenuPrincipalComponent  implements OnInit {
     this.router.navigate(['/eventos'])
   }
   ir_ficha(){
-    this.router.navigate(['/ficha-alumno'])
+    this.router.navigate(['/historial-ficha'])
   }
 
 

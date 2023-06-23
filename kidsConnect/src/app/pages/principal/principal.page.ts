@@ -43,7 +43,7 @@ export class PrincipalPage implements OnInit {
   }
 
   ir_ficha(){
-    this.router.navigate(['/ficha-alumno'])
+    this.router.navigate(['/historial-ficha'])
   }
 
   ir_eventos(){

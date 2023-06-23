@@ -31,7 +31,7 @@ export class HistorialFichaPage implements OnInit {
         (response: HistorialResponse) => {
           if (response.success) {
             this.historial = response.data.data;
-            console.log(this.historial);
+            this.presentToast('bottom', 'Ficha Encontrada, Presiona ver Ficha');
           } else {
             if (response.message) {
               this.presentToast('bottom', response.message);
