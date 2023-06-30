@@ -32,23 +32,24 @@ export class HistorialFichaPage implements OnInit {
           if (response.success) {
             this.historial = response.data.data;
             this.presentToast('bottom', 'Ficha Encontrada, Presiona ver Ficha');
-          } else {
-            if (response.message) {
-              this.presentToast('bottom', response.message);
-            } else {
-              this.presentToast('bottom', 'Error al buscar el historial de la ficha.');
+  
+            if (!this.historial || this.historial.length === 0) {
+              // Mostrar mensaje si no hay datos de historial de ficha
+              this.presentToast('bottom', 'No se encontraron datos para el alumno ingresado.');
             }
+          } else {
+            this.presentToast('bottom', 'Error al buscar el historial de la ficha.');
           }
         },
         (error: any) => {
           console.error(error);
-          this.presentToast('bottom', 'Error al buscar el historial de la ficha.');
         }
       );
     } else {
       this.presentToast('bottom', 'El campo RUT del alumno es obligatorio');
     }
   }
+  
   
 
   async presentToast(position: 'top' | 'middle' | 'bottom', message: string) {

@@ -35,14 +35,18 @@ export class FichaAlumnoPage implements OnInit {
         if (response.data && response.data.length > 0) {
           this.fichas = response.data[0];
           this.presentToast('bottom', 'Ficha encontrada. Presiona ver ficha.');
-          console.log(this.fichas)
+          console.log(this.fichas);
         } else {
           // Mostrar mensaje si no hay datos de la ficha
           this.presentToast('bottom', 'No se encontraron datos para el alumno ingresado.');
         }
       } else {
         // Mostrar mensaje de error si no se encontró la ficha
-        this.presentToast('bottom', 'No se encontraron datos para el alumno ingresado.');
+        if (response && response.message === 'No existe el rut') {
+          this.presentToast('bottom', 'No existe el rut.');
+        } else {
+          this.presentToast('bottom', 'No se encontraron datos para el alumno ingresado.');
+        }
       }
     } catch (error) {
       // Manejar errores de la solicitud
@@ -50,6 +54,7 @@ export class FichaAlumnoPage implements OnInit {
       this.presentToast('bottom', 'Debe ingresar un rut.');
     }
   }
+  
     
   
   onClick() {
