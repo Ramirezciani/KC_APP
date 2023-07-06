@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { DbService } from './services/db.service';
-
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
+    component: WelcomeComponent
   },
   {
     path: 'login',
@@ -42,7 +41,8 @@ const routes: Routes = [
   {
     path: 'recuperar-pass',
     loadChildren: () => import('./pages/recuperar-pass/recuperar-pass.module').then( m => m.RecuperarPassPageModule)
-  },  {
+  },
+  {
     path: 'responder-mensaje',
     loadChildren: () => import('./pages/responder-mensaje/responder-mensaje.module').then( m => m.ResponderMensajePageModule)
   },
@@ -50,6 +50,8 @@ const routes: Routes = [
     path: 'historial-ficha',
     loadChildren: () => import('./pages/historial-ficha/historial-ficha.module').then( m => m.HistorialFichaPageModule)
   },
+  
+
 
 
 
